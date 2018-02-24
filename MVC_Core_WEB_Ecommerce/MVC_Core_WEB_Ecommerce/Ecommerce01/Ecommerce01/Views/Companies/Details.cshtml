@@ -1,0 +1,134 @@
+﻿@model Ecommerce01.Models.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Dettagli</h2>
+
+<div>
+    <h4>Azienda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Locality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locality)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartitaIva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartitaIva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodiceFiscale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodiceFiscale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneMobil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneMobil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.http)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.http)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Logo)*@
+            @if (!string.IsNullOrEmpty(Model.Logo))
+            {
+                <img src="@Url.Content(Model.Logo)" alt="Image" style="width: 150px; height: 150px; max-width: 100%; height: auto;" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+    @Html.ActionLink("Modifica", "Edit", new { id = Model.CompanyId }, new { @class = "btn btn-info" })
+</div>

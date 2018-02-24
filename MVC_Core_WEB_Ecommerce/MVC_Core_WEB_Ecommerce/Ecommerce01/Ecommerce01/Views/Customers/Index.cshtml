@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Ecommerce01.Models.Customer>
+
+@{
+    ViewBag.Title = "Clienti";
+}
+
+<h2>Clienti</h2>
+
+<p>
+    @Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departament.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                @Html.ActionLink("Modifica", "Edit", new { id = item.CustomerId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Altri Dettagli", "Details", new { id = item.CustomerId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Elimina", "Delete", new { id = item.CustomerId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+</table>
+@*@if (Model.PageCount > 1)
+{
+    <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter = ViewBag.CurrentFilter
+    }));
+}﻿*@

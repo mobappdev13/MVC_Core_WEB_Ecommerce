@@ -1,0 +1,43 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Edit Project";
+
+}
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<div class="form-container">
+    <h2 style="color:cornflowerblue;text-align:center">Create/Edit Project</h2>
+    <form method="post" class="form-group">
+        <div class="form-group">
+            <label class="control-label" style="color:cornflowerblue;" asp-for="Codice">Codice:</label>
+            <input class="form-control" asp-for="Codice" style="width:185px"  />
+            <span asp-validation-for="Codice"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="color:cornflowerblue;" asp-for="Tecnologia">Tecnologia:</label>
+            <input class="form-control" asp-for="Tecnologia" style="width:185px" />
+            <span asp-validation-for="Tecnologia"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="color:cornflowerblue;" asp-for="DataScadenza">Data Scadenza:</label>
+            <input class="form-control" asp-for="DataScadenza" type="date" style="width:185px" />
+            <span asp-validation-for="DataScadenza"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="color:cornflowerblue;" asp-for="DataConsegnaEffettiva">Data Consegna Prevista:</label>
+            <input class="form-control" asp-for="DataConsegnaEffettiva" type="date" style="width:185px" />
+            <span asp-validation-for="DataConsegnaEffettiva"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" style="color:cornflowerblue;" asp-for="DipendentiRichiesti">Num.Dipendenti Richiesti:</label>
+            <input class="form-control" asp-for="DipendentiRichiesti" type="number" style="width:80px" />
+            <span asp-validation-for="DipendentiRichiesti"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" />
+        </div>
+    </form>
+</div>

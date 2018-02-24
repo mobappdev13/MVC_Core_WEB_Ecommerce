@@ -1,0 +1,146 @@
+﻿@model PagedList.IPagedList<Ecommerce01.Models.Company>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Aziende</h2>
+
+<p>
+   @Html.ActionLink("Crea Nuova", "Create", new { }, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+
+        
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().Locality)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Province.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AddressO)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().AddressL)
+    </th>*@
+       
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PartitaIva)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().CodiceFiscale)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneMobil)
+    </th>*@
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().Fax)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model => model.FirstOrDefault().http)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Logo)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.City.Name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Locality)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Province.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departament.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressO)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AddressL)
+        </td>*@
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.PartitaIva)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CodiceFiscale)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PhoneMobil)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.http)
+        </td>*@
+        
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Logo)
+        </td>*@
+        <td>
+            @if (!string.IsNullOrEmpty(item.Logo))
+                {
+                <img src="@Url.Content(item.Logo)" alt="Image" style="width:400px;height:400px;max-width: 100%; height: auto;" />
+            }
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            @Html.ActionLink("Modifica", "Edit", new { id = item.CompanyId }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Altri Dettagli", "Details", new { id = item.CompanyId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Elimina", "Delete", new { id = item.CompanyId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@if (Model.PageCount > 1)
+{
+    <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter = ViewBag.CurrentFilter
+    }));
+}﻿
+

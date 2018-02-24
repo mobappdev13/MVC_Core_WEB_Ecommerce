@@ -1,0 +1,40 @@
+﻿@model Ecommerce01.Models.User
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ECommerce- ASP.NET Core MVC</h1>
+    <p class="lead">ECommerce Base Multi Azienda</p>
+
+   @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+    {
+        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:200px;height:200px;max-width: 100%; height: auto;" />
+    }
+   <p></p>
+    <p>Si può scaricare il progetto completo da GitHub Ecomerce01.</p>
+    <p><a class="btn btn-primary" href="https://github.com/mobappdev13/MVC_WEB_APPS">Codice sorgente GIT &raquo;</a></p>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <h2>Benvenuto a ECommerce Base Multi Azienda</h2>
+        <p>
+         Questa web App: ECommerce di base, è un esempio concreto di come gestire cataloghi prodotti di molteplici Aziende (multi-impresa) e
+         dimostra come usare Entity Framework Core all'interno di una ASP.NET Core MVC applicazione web.
+        </p>
+            </div>
+    <div class="col-md-4">
+        <h2>Blog del Programmatore Vargas</h2>
+        <p>Si può leggere il suo BLOG qui</p>
+        <p><a class="btn btn-primary" href="https://appissue.wordpress.com">Appissue Blog Vargas &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>CV Programmatore</h2>
+        <p>Informazioni dettagliate</p>
+        <p><a class="btn btn-primary" href="https://it.linkedin.com/in/vargascarmen">CV Programmatore Vargas &raquo;</a></p>
+    </div>
+</div>

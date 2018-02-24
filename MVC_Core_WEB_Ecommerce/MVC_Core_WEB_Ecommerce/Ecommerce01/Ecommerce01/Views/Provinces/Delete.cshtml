@@ -1,0 +1,72 @@
+﻿@model Ecommerce01.Models.Province
+
+@{
+    ViewBag.Title = "Elimina";
+}
+
+<h2>Elimina</h2>
+
+<h3>E'sicuro di volere eliminare questo Registro?</h3>
+<div>
+    <h4>Province</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SigCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SigCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwoInitial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwoInitial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+            <input type="submit" value="Elimina" class="btn btn-danger" />
+        </div>
+    }
+</div>

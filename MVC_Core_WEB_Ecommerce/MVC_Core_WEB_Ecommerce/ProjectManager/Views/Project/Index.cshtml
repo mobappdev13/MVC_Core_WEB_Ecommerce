@@ -1,0 +1,59 @@
+﻿@model List<Project>
+
+<h1 class="jumbotron" style="text-align:center;color:cornflowerblue">Current projects list</h1>
+<table class="table">
+    <thead>
+        <tr class="jumbotron">
+            <td><h4 style="color:cornflowerblue">Codice</h4></td>
+            <td><h4 style="color:cornflowerblue">Tecnologia</h4></td>
+            <td><h4 style="color:cornflowerblue">Data Scadenza</h4></td>
+            <td><h4 style="color:cornflowerblue">Data Consegna</h4></td>
+            <td><h4 style="color:cornflowerblue">Dip.Necessari</h4></td>
+            <td><h4 style="color:cornflowerblue">% Occupazione</h4></td>
+            <td><h4 style="color:cornflowerblue">In Tempo</h4></td>
+            <td colspan="2"></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Codice</td>
+                <td>@p.Tecnologia</td>
+                @* @crd.ToString("MM/dd/yyyy HH:mm") *@
+                <td>@p.DataScadenza.ToString("dd/MM/yyyy")</td>
+                <td>@p.DataConsegnaEffettiva?.ToString("dd/MM/yyyy")</td>
+                <td>@p.DipendentiRichiesti</td>
+                <td>2%</td>
+                @{var onTime = @p.GetOnTimeProject(p.DataScadenza, p.DataConsegnaEffettiva);}
+                @if (onTime == "No")
+                {
+                    <td style="color: #a94442"><b>@onTime</b></td>
+                }
+                else
+                {
+                    <td style="color: black"><b>@onTime</b></td>
+                }
+                @* attenzione collegamento fra entita *@
+                <td><a asp-controller="Project" asp-action="EmployeesOnProject" asp-route-id="@p.Id" class="btn btn-primary">Show List Employees</a></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr class="jumbotron">
+                <td><b><a asp-controller="Project" asp-action="Edit" asp-route-id="@p.Id">Edit</a></b></td>
+                <td><b><a asp-controller="Project" asp-action="Delete" asp-route-id="@p.Id" class="text-danger">Delete</a></b></td>
+            <td colspan="7"></td>
+            </tr>
+            
+       
+                   }
+        @*<tr><td colspan="6"></td></tr>*@
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td><a class="btn btn-primary" asp-controller="Project" asp-action="Edit">Add NEW Project</a></td>
+          <td colspan="8"></td>
+        </tr>
+    </tbody>
+</table>
+
+

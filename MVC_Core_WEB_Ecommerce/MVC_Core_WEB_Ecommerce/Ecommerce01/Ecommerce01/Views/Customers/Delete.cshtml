@@ -1,0 +1,92 @@
+﻿@model Ecommerce01.Models.Customer
+
+@{
+    ViewBag.Title = "Elimina";
+}
+
+<h2>Elimina</h2>
+
+<h3>E' sicuro di volere eliminare questo registro ?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+        @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+            <input type="submit" value="Elimina" class="btn btn-danger" />
+        </div>
+    }
+</div>

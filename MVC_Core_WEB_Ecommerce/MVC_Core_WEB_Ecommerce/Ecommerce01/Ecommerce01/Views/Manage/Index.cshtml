@@ -1,0 +1,87 @@
+﻿@model Ecommerce01.Models.IndexViewModel
+@{
+    ViewBag.Title = "Gestisci";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Cambiare le impostazioni dell'account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Cambia password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Crea", "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>Account di accesso esterni:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Gestisci", "ManageLogins") ]
+        </dd>
+        @*
+            È possibile usare i numeri di telefono come secondo fattore di verifica in un sistema di autenticazione a due fattori.
+             
+             Vedere <a href="https://go.microsoft.com/fwlink/?LinkId=403804">questo articolo</a>
+                per informazioni su come configurare l'applicazione ASP.NET per il supporto dell'autenticazione a due fattori usando gli SMS.
+             
+             Rimuovere i commenti dal blocco seguente dopo aver configurato l'autenticazione a due fattori
+        *@
+        @*  
+            <dt>Numero di telefono:</dt>
+            <dd>
+                @(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>[<input type="submit" value="Rimuovi" class="btn-link" />]</text>
+                    }
+                }
+                else
+                {
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                }
+            </dd>
+        *@
+        <dt>Autenticazione a due fattori:</dt>
+        <dd>
+            <p>
+                Non sono configurati provider di autenticazione a due fattori. Vedere <a href="https://go.microsoft.com/fwlink/?LinkId=403804">questo articolo</a>
+                per informazioni su come configurare l'applicazione ASP.NET per il supporto dell'autenticazione a due fattori.
+            </p>
+            @*@if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Abilitata
+                        <input type="submit" value="Disabilita" class="btn btn-link" />
+                        </text>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Disabilitata
+                        <input type="submit" value="Abilita" class="btn btn-link" />
+                        </text>
+                    }
+                }*@
+        </dd>
+    </dl>
+</div>

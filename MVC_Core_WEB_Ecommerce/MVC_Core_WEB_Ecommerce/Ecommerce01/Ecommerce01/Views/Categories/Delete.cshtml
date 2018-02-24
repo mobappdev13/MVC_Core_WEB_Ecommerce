@@ -1,0 +1,40 @@
+﻿@model Ecommerce01.Models.Category
+
+@{
+    ViewBag.Title = "Elimina";
+}
+
+<h2>Elimina</h2>
+
+<h3>E' sicuro di volere eliminare questo registro ?</h3>
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+            <input type="submit" value="Elimina" class="btn btn-danger" />
+        </div>
+    }
+</div>

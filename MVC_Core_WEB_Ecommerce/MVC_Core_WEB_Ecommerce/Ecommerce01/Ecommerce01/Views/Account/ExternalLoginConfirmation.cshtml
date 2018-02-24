@@ -1,0 +1,36 @@
+﻿@model Ecommerce01.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Registrazione";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Associare l'account @ViewBag.LoginProvider.</h3>
+
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Form di associazione</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <p class="text-info">
+        L'utente ha eseguito l'autenticazione con <strong>@ViewBag.LoginProvider</strong>.
+        Immettere di seguito un nome utente per questo sito e fare clic sul pulsante Registra
+        per completare l'accesso.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Registra" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

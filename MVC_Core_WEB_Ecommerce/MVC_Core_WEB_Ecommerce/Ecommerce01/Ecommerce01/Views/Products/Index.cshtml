@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<Ecommerce01.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Prodotti";
+}
+
+<h2>Prodotti</h2>
+
+<p>
+    @Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Category.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Tax.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().BarCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Image)
+        </th>
+        @*<th>
+        @Html.DisplayNameFor(model =>  model.FirstOrDefault().Remarks)
+    </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BarCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.Image))
+            {
+                <img src="@Url.Content(item.Image)" alt="Image" style="width:300px;height:300px;max-width: 100%; height: auto;" />
+            }
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>*@
+        <td>
+            @Html.ActionLink("Modifica", "Edit", new { id = item.ProductId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Dettagli", "Details", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Elimina", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@if (Model.PageCount > 1)
+{
+    <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter = ViewBag.CurrentFilter
+    }));
+}﻿

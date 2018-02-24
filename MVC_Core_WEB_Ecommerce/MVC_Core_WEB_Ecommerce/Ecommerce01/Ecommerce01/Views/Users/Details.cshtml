@@ -1,0 +1,105 @@
+﻿@model Ecommerce01.Models.User
+
+@{
+    ViewBag.Title = "Dettagli";
+}
+
+<h2>Dettagli</h2>
+
+<div>
+    <h4>Utente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Photo)*@
+            @if (!string.IsNullOrEmpty(Model.Photo))
+            {
+                <img src="@Url.Content(Model.Photo)" alt="Image" style="width: 150px; height: 150px; max-width: 100%; height: auto;" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+    @Html.ActionLink("Modifica", "Edit", new { id = Model.UserId }, new { @class = "btn btn-info" })
+</div>

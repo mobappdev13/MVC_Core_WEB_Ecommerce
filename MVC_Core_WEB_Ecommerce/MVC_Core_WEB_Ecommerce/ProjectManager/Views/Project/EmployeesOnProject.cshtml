@@ -1,0 +1,29 @@
+﻿@model Project
+
+@{
+    ViewData["Title"] = "List employees on Project";
+}
+
+<h1 class="jumbotron">Employees on Project @Model.Codice</h1>
+
+<table class="table">
+    <thead>
+        <tr class="jumbotron">
+            <td>Nome</td>
+            <td>Cognome</td>
+            <td>Genere</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var e in Model.ListEmployeesOnProject)
+        {
+            <tr class="jumbotron">
+                <td>@e.Nome</td>
+                <td>@e.Cognome</td>
+                <td>@e.GetGenere(e.Genere)</td>
+            </tr>
+        }
+    </tbody>
+</table>

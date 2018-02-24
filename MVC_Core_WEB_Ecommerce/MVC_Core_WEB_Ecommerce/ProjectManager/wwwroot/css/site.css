@@ -1,0 +1,19 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.form-container {
+    max-width: 500px;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+/*text-align: center; text-transform: uppercase; color: #4CAF50;*/

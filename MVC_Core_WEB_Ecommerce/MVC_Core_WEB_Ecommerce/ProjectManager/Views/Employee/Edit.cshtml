@@ -1,0 +1,53 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+@{
+   
+var progetti = (List<Project>)ViewData["projects"];
+
+var projectslist = new SelectList(
+    progetti,
+    nameof(Project.Id),
+    nameof(Project.Codice));
+
+}
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+<div class="form-container">
+    <h2 style="color:cornflowerblue;text-align:center">Create/Edit Employee</h2>
+     <form method="post" class="form-group">
+        <div class="form-group">
+            <label style="color:cornflowerblue;" class="control-label" asp-for="Nome"></label>
+            <input class="form-control" asp-for="Nome" style="width:185px" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label style="color:cornflowerblue;" class="control-label" asp-for="Cognome"></label>
+            <input class="form-control" asp-for="Cognome" style="width:185px" />
+            <span asp-validation-for="Cognome" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label style="color:cornflowerblue;" class="control-label" asp-for="Genere">Genere [F/M/N]</label>
+            <input class="form-control" asp-for="Genere" value="F" style="width:35px" />
+            <span asp-validation-for="Genere" class="text-danger" ></span>
+        </div>
+
+        @* qui diverso *@
+        <div class="form-group">
+            <label style="color:cornflowerblue;" class="control-label" asp-for="Progetto"></label>
+            <select class="form-control"
+                    asp-for="ProgettoId"
+                    asp-items="projectslist" style="width:95px"></select>
+            <span asp-validation-for="ProgettoId" class="text-danger"></span>
+        </div>
+       
+        <div class="form-group">
+            <input type="submit" value="Save" />
+        </div>
+    </form>
+</div>
+

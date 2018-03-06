@@ -114,38 +114,6 @@ h4 small,
     background-color: #0a70d6 !important;
 }
 
-/*/*add last*/
-/*.navbar-light .navbar-text {
-    color: rgba(255, 255, 0, 0.5);
-}
-
-    .navbar-light .navbar-text a {
-        color: rgba(255, 255, 0, 0.9);
-    }
-
-        .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
-            color: rgba(255, 255, 0, 0.9);
-        }*/
-
-/*add last*/
-/*.navbar-dark .navbar-text {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-    .navbar-dark .navbar-text a {
-        color: #fff;
-    }
-
-        .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
-            color: #fff;
-        }*/
-
-/*@include media-breakpoint-between(xs,sm) {
-    .btn {
-        @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
-    }
-}*/
-
 /*attention */
 @font-face {
     font-family: 'Font Awesome 5 Free';
@@ -161,13 +129,13 @@ h4 small,
 
 
 
-.fa,
+/*.fa,
 .fas {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color: dodgerblue;
     font-size:36px;
-}
+}*/
 
 /*@font-face {
     [ font-family: <family-name>; ] || [ src: [ <url> [ format(<string>#) ]? | <font-face-name> ]#; ] || [ unicode-range: <urange>#; ] || [ font-variant: <font-variant>; ] || [ font-feature-settings: normal | <feature-tag-value>#; ] || [ font-variation-settings: normal | [ <string> <number>] # ||

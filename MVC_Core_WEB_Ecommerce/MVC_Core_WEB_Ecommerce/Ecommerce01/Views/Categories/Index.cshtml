@@ -9,12 +9,13 @@
 <h2>Categorie Merceologiche</h2>
 
 <p>
-    @Html.ActionLink("Crea Nuova", "Create", new { }, new { @class = "btn btn-info" })
-    <a href="@Url.Action("Delete", "Categories", new { id = 1 })" class="btn btn-default">
-        <i aria-hidden="true" class="far fa-trash-alt" title="test"></i>
-        <span class="sr-only">test</span>
+    <a href="@Url.Action("Create", "Categories", new { })" class="btn btn-default btn-sm">
+        <i aria-hidden="true" class="btn btn-default btn-sm far fa-plus-square fa-3x" title="Crea Nuovo"></i>
+        Crea Nuovo
+        <span class="sr-only">Crea Nuovo</span>
     </a>
 </p>
+
 <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered">
         @*<table class="table">*@
@@ -32,16 +33,17 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                      <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-default">
-                        <i aria-hidden="true" class="fas fa-edit" title="Modifica"></i>
+                        @*  <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-default"> *@
+                      <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })"  class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="fas fa-edit fa-3x" style="color:#0f7ed1" title="Modifica"></i>
                          <span class="sr-only">Modifica</span>  
                         </a>
-                        <a href="@Url.Action("Details", "Categories", new { id = item.CategoryId })" class="btn btn-default">
-                            <i aria-hidden="true" class="far fa-list-alt" title="Dettagli"></i>
+                        <a href="@Url.Action("Details", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
+                            <i aria-hidden="true" class="fas fa-list-alt fa-3x" style="color:#e06b19" title="Dettagli"></i>
                             <span class="sr-only">Dettagli</span>
                         </a>
-                        <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryId })" class="btn btn-default">
-                            <i aria-hidden="true" class="far fa-trash-alt" title="Elimina"></i>
+                        <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
+                            <i aria-hidden="true" class="fas fa-trash-alt fa-3x" style="color:#e01414" title="Elimina"></i>
                             <span class="sr-only">Elimina</span>
                         </a>
                     </td>

@@ -33,8 +33,14 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
-            <input type="submit" value="Elimina" class="btn btn-danger" />
+            <a href="@Url.Action("Index", "Categories", new { })" class="btn btn-default btn-sm">
+                <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-3x"></i>
+                <span class="sr-only">Ritorna</span>
+            </a>
+            @*<input type="submit" value="Elimina" class="btn btn-danger" />*@
+            <button class="btn btn-link btn-xs" type="submit" name="action" value="Elimina">
+                <i class="btn btn-danger far fa-trash-alt btn-xs"></i>
+            </button>
         </div>
     }
 </div>

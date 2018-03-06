@@ -3,6 +3,7 @@ using System.Web.Optimization;
 
 namespace Ecommerce01
 {
+    //last add media-queries
     public class BundleConfig
     {
         // Per altre informazioni sulla creazione di bundle, vedere https://go.microsoft.com/fwlink/?LinkId=301862

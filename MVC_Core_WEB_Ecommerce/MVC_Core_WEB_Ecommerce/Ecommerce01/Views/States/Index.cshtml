@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Ecommerce01.Models.State>
+
+@{
+    ViewBag.Title = "Stati Possibili";
+}
+
+<h2>Stati</h2>
+
+<p>
+    @Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Modifica", "Edit", new { id = item.StateId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Dettagli", "Details", new { id = item.StateId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Elimina", "Delete", new { id = item.StateId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

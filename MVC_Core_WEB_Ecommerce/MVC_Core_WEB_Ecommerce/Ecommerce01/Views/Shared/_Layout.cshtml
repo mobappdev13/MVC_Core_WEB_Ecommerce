@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - ECommerce ASP.NET Core MVC</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap.css") 
+    @Styles.Render("~/Content/css/fontawesome-all.css")
+    @Styles.Render("~/Content/media-query.css")
+    @Styles.Render("~/Content/site.css")
+    @*@Mvc.RazorTools.BundleManager.Styles.Render()*@
+</head>
+<body>
+   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        @Html.ActionLink("Ecommerce Base", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Chi siamo", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contatti", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                        <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        AdminMenu
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                            <li class="dropdown-item active">@Html.ActionLink("Aziende", "Index", "Companies", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Città", "Index", "Cities", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Province", "Index", "Provinces", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Regioni", "Index", "Departaments", new { area = "" }, new { @class = "dropdown-item" })</li>
+
+                            <li class="dropdown-item">@Html.ActionLink("StatiPossibili", "Index", "States", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li class="dropdown-item">@Html.ActionLink("Utenti", "Index", "Users", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Transazioni
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                                <li class="dropdown-item">@Html.ActionLink("Acquisti", "Index", "Purchases")</li>
+                                <li class="dropdown-item">@Html.ActionLink("Ordini", "Index", "Orders")</li>
+                                <li class="dropdown-item">@Html.ActionLink("Vendite", "Index", "Sales")</li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("User"))
+                    { 
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-item nav-link dropdown-toggle mr-md-2"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                StoreMenu
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                               
+                                <li class="dropdown-item">@Html.ActionLink("Categorie", "Index", "Categories", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li class="dropdown-item">@Html.ActionLink("Clienti", "Index", "Customers", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li class="dropdown-item">@Html.ActionLink("Fornitori", "Index", "Suppliers", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li class="dropdown-item">@Html.ActionLink("Prodotti", "Index", "Products", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li class="dropdown-item">@Html.ActionLink("Tasse-Sconti", "Index", "Taxes", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li class="dropdown-item">@Html.ActionLink("Magazzini", "Index", "Warehouses", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            </ul>
+                        </li>
+                    }
+                  </ul> 
+              @Html.Partial("_LoginPartial")
+        </div>
+  </nav>
+   <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Italy - FVG - mobappdev1 -  ECommerce ASP.NET Core MVC</p>
+        </footer>
+  </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/Scripts/script.js")
+        @RenderSection("scripts", required: false)
+</body>
+</html>
+

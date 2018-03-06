@@ -1,0 +1,25 @@
+﻿@model Ecommerce01.Models.State
+
+@{
+    ViewBag.Title = "Dettagli";
+}
+<h2>Dettagli</h2>
+
+    <div>
+        <h4>Stato</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+    </div>
+   <div>
+    @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
+    @Html.ActionLink("Modifica", "Edit", new { id = Model.StateId }, new { @class = "btn btn-info" })
+</div>

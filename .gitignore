@@ -12,13 +12,13 @@
 
 
 # Ignore an intere directory
-/App_Start/
-/webfonts/
-/Classes/
-/Content/
-/Migrations/
-/Models/
-/Scripts/
+App_Start/
+webfonts/
+Classes/
+Content/
+Migrations/
+Models/
+Scripts/
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)

@@ -6,6 +6,20 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.json
+*.config
+*.asax
+
+
+# Ignore an intere directory
+/App_Start/
+/webfonts/
+/Classes/
+/Content/
+/Migrations/
+/Models/
+/Scripts/
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

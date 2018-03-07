@@ -5,3 +5,5 @@ In particolare questa web app, nel primo momento crea un backend che si occupa d
 multi impresa e multi user.
 Gestisce diversi tipologie di user
 In un secondo momento: la web app proseguira con lo sviluppo front end (xamarin)- e/o android.
+
+![immagine delle categorie](https://github.com/mobappdev13/MVC_Core_WEB_Ecommerce/blob/newEcommerce/Categories.PNG)

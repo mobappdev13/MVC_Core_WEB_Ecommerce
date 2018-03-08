@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Ecommerce01.Classes;
 using Ecommerce01.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Ecommerce01.Controllers
 {
@@ -16,10 +18,12 @@ namespace Ecommerce01.Controllers
     {
         private Ecommerce01Context db = new Ecommerce01Context();
 
+        private const int itemsonPage = 2;
         // GET: Suppliers
-        public ActionResult Index()
+        public ActionResult Index(int? page = null)
         {
-             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            page = (page ?? 1);
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
             var supplierscompany = (from su in db.Suppliers
                                     join sc in db.CompanySuppliers on su.SupplierId equals sc.SupplierId
@@ -37,7 +41,8 @@ namespace Ecommerce01.Controllers
             return View(suppliers.OrderBy(s => s.UserName)
                .ThenBy(c => c.DepartamentId)
                .ThenBy(c => c.ProvinceId)
-               .ThenBy(c => c.CityId).ToList());           
+               .ThenBy(c => c.CityId)
+               .ToPagedList((int)page, itemsonPage));
         }
 
         // GET: Suppliers/Details/5

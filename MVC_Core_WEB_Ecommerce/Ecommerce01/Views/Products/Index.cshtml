@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<Ecommerce01.Models.Product>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Prodotti";
 }
@@ -7,7 +8,15 @@
 <h2>Prodotti</h2>
 
 <p>
-    @Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })
+    @*@Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })*@
+    <a href="@Url.Action(
+            "Create",
+            "Products",
+            new { })" class="btn btn-default btn-xs">
+        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-3x text-success" title="Crea Nuovo"></i>
+        Crea Nuovo
+        <span class="sr-only">Crea Nuovo</span>
+    </a>
 </p>
 <table class="table">
     <tr>
@@ -103,9 +112,19 @@
     </tr>
         <tr>
             <td colspan="5">
-                @Html.ActionLink("Modifica", "Edit", new { id = item.ProductId }, new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Dettagli", "Details", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Elimina", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+                @*  <a href="@Url.Action("Edit", "XXXProducts", new { id = item.XXXId })" class="btn btn-default"> *@
+                <a href="@Url.Action("Edit", "Products", new { id = item.ProductId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                    <span class="sr-only">Modifica</span>
+                </a>
+                <a href="@Url.Action("Details", "Products", new { id = item.ProductId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" title="Dettagli"></i>
+                    <span class="sr-only">Dettagli</span>
+                </a>
+                <a href="@Url.Action("Delete", "Products", new { id = item.ProductId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                    <span class="sr-only">Elimina</span>
+                </a>
             </td>
         </tr>
 }

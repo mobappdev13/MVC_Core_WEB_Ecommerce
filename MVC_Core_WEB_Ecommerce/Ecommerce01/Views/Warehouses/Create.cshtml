@@ -17,15 +17,7 @@
         @Html.HiddenFor(model => model.CompanyId)
         @Html.HiddenFor(model => model.WarehouseId)
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.CompanyId, "CompanyId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CompanyId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="form-group">
+       <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -66,7 +58,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CityId,  htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CityId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CityId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
@@ -75,11 +67,22 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
-                <input type="submit" value="Crea" class="btn btn-info" />
+                @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+                <a href="@Url.Action("Index", "Warehouses", new { })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                    <span class="sr-only">Ritorna</span>
+                </a>
+                @*<input type="submit" value="Crea" class="btn btn-info" />*@
+
+                <button class="btn btn-link btn-xs" type="submit" name="action" value="Crea">
+                    @*<i class="btn btn-default btn-xs far fa-save fa-3x"></i>*@
+                    <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-2x text-info" title="Crea"></i>
+                    <span class="sr-only">Crea Nuovo</span>
+                </button>
             </div>
         </div>
     </div>
+    
 }
 
 @section Scripts {

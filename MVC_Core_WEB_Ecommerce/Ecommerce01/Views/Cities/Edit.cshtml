@@ -67,8 +67,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })
-                <input type="submit" value="Salva" class="btn btn-info" />
+                <a href="@Url.Action("Index", "Cities", new { })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                    <span class="sr-only">Ritorna</span>
+                </a>
+                <button class="btn btn-link btn-xs " type="submit" name="action" value="Salva">
+                    <i aria-hidden="true" class="btn btn-default btn-xs far fa-save fa-2x text-info" title="Salva"></i>
+
+                    <span class="sr-only">Salva</span>
+                </button>
             </div>
         </div>
     </div>

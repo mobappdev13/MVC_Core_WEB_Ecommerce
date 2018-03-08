@@ -27,8 +27,11 @@
             @Html.DisplayNameFor(model => model.FirstOrDefault().FullName)
         </th>
         
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().DateBirth)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Company.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
@@ -37,17 +40,15 @@
             @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Province.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Company.Name)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
         </th>
@@ -70,8 +71,11 @@
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
        
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.DateBirth)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Phone)
@@ -80,16 +84,14 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Departament.Name)
+            @Html.DisplayFor(modelItem => item.City.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Province.Name)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.City.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.Name)
+            @Html.DisplayFor(modelItem => item.Departament.Name)
         </td>
         <td>
             @if (!string.IsNullOrEmpty(item.Photo))

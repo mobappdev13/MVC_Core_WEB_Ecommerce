@@ -8,7 +8,15 @@
 <h2>Province</h2>
 
 <p>
-    @Html.ActionLink("Crea Nuova", "Create", new { }, new { @class = "btn btn-info" })
+    @*@Html.ActionLink("Crea Nuova", "Create", new { }, new { @class = "btn btn-info" })*@
+    <a href="@Url.Action(
+            "Create",
+            "Provinces",
+            new { })" class="btn btn-default btn-xs">
+        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-3x text-success" title="Crea Nuovo"></i>
+        Crea Nuovo
+        <span class="sr-only">Crea Nuovo</span>
+    </a>
 </p>
 <table class="table">
     <tr>
@@ -55,9 +63,20 @@
             @Html.DisplayFor(modelItem => item.Longitud)
         </td>
         <td>
-            @Html.ActionLink("Modifica", "Edit", new { id = item.ProvinceId }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Dettagli", "Details", new { id = item.ProvinceId }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Elimina", "Delete", new { id = item.ProvinceId }, new { @class = "btn btn-danger" })
+            @*@Html.ActionLink("Modifica", "Edit", new { id = item.ProvinceId }, new { @class = "btn btn-info" }) |*@
+            @*  <a href="@Url.Action("Edit", "Provinces", new { id = item.XXXId })" class="btn btn-default"> *@
+            <a href="@Url.Action("Edit", "Provinces", new { id = item.ProvinceId })" class="btn btn-default btn-sm">
+                <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                <span class="sr-only">Modifica</span>
+            </a>
+            <a href="@Url.Action("Details", "Provinces", new { id = item.ProvinceId })" class="btn btn-default btn-sm">
+                <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" title="Dettagli"></i>
+                <span class="sr-only">Dettagli</span>
+            </a>
+            <a href="@Url.Action("Delete", "Provinces", new { id = item.ProvinceId })" class="btn btn-default btn-sm">
+                <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                <span class="sr-only">Elimina</span>
+            </a>
         </td>
     </tr>
 }

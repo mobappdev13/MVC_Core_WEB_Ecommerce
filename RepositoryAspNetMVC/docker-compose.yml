@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  repositoryaspnetmvc:
+    image: repositoryaspnetmvc
+    build:
+      context: .\RepositoryAspNetMVC
+      dockerfile: Dockerfile

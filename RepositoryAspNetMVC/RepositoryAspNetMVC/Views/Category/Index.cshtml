@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<html>
+<head>
+   <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    
+    <h3>Lista Categorias</h3>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Descrizione</td>
+        </tr>
+        @foreach (var category in ViewBag.categories)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.Description</td>
+            </tr>
+        }
+    </table>
+</body>
+
+</html>
+

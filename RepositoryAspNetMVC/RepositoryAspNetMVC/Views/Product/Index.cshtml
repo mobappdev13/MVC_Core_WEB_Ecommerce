@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <h3>Lista Prodotti</h3>
+    <table class="table-responsive">
+        <tr>
+
+            @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Tax.Type)
+            </th>*@
+            <th>
+               <strong>Descrizione</strong>
+            </th>
+            <th>
+                <strong>Bar_Code</strong>
+            </th>
+            <th>
+                <strong>Categoria</strong>
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Company.Name)
+            </th>*@
+            <th>
+                <strong>Prezzo</strong>
+            
+            </th>
+            <th>
+                <strong>Tassa_Sconto</strong>
+               
+            </th>
+            @*<th>
+              @Html.TextBox("Stock")
+            </th>*@
+            <th>
+                <strong>Punto di Riordino</strong>
+               
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().VendorPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().VendorProductCode)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Image)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Remarks)
+            </th>*@
+            <th></th>
+        </tr>
+        @foreach (var item in ViewBag.products)
+        {
+            <tr>
+                @*<td>@item.ProductId</td>
+                @*<td>@item.CategoryId</td>*@
+                <td>@item.Description</td>
+                <td>@item.BarCode</td>
+                <td>@item.Category.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Tax.Description</td>
+               
+                <td>@item.ReorderPoint</td>
+            </tr>
+            
+        }
+    </table>
+</body>
+</html>

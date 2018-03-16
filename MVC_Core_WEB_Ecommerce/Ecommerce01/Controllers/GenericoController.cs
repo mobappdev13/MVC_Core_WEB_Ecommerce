@@ -14,6 +14,7 @@ namespace Ecommerce01.Controllers
         ////[HttpGet]
         public JsonResult GetProvinces(int departamentId)
         {
+            //add
             db.Configuration.ProxyCreationEnabled = false;
             var provinces = db.Provinces.Where(p => p.DepartamentId == departamentId);
             // can be  return Json(modelList,JsonRequestBehavior.AllowGet);

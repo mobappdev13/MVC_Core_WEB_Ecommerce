@@ -6,13 +6,11 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Newtonsoft.Json;
 
-namespace Ecommerce01WebApiMVC
+namespace Ecommerce01ApiDependencyInjection
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class MvcApplication : System.Web.HttpApplication
     {
-        
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -21,14 +19,5 @@ namespace Ecommerce01WebApiMVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-        ////last add
-        //void SerializeSettings(HttpConfiguration config)
-        //{
-        //    JsonSerializerSettings jsonSetting = new JsonSerializerSettings();
-        //    jsonSetting.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
-        //    config.Formatters.JsonFormatter.SerializerSettings = jsonSetting;
-        //}
-
     }
 }

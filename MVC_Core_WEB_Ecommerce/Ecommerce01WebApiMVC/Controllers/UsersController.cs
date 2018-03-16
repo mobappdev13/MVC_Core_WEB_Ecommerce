@@ -12,46 +12,48 @@ using Ecommerce01WebApiMVC.Models;
 
 namespace Ecommerce01WebApiMVC.Controllers
 {
-    public class ProductsController : ApiController
+    public class UsersController : ApiController
     {
         private Ecommerce19Entities db = new Ecommerce19Entities();
-        
 
-        // GET: api/Products
-
-        public IQueryable<Product> GetProducts()
+        // GET: api/Users
+        //Consulta
+        public IQueryable<User> GetUsers()
         {
-            return db.Products;
+            return db.Users;
         }
 
-        // GET: api/Products/5
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(int id)
+        // GET: api/Users/5
+        //consulta 5
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUser(int id)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
+            var user = db.Users.Find(id);
+
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(user);
         }
 
-        // PUT: api/Products/5
+        // PUT: api/Users/5
+        //Modifica
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProduct(int id, Product product)
+        public IHttpActionResult PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ProductId)
+            if (id != user.UserId)
             {
                 return BadRequest();
             }
 
-            db.Entry(product).State = EntityState.Modified;
+            db.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +61,7 @@ namespace Ecommerce01WebApiMVC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +74,37 @@ namespace Ecommerce01WebApiMVC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Products
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult PostProduct(Product product)
+        // POST: api/Users
+        //nuovo insert
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Products.Add(product);
+            db.Users.Add(user);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
+            return CreatedAtRoute("DefaultApi", new { id = user.UserId }, user);
         }
 
-        // DELETE: api/Products/5
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult DeleteProduct(int id)
+        // DELETE: api/Users/5
+        //remove
+        [ResponseType(typeof(User))]
+        public IHttpActionResult DeleteUser(int id)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            db.Products.Remove(product);
+            db.Users.Remove(user);
             db.SaveChanges();
 
-            return Ok(product);
+            return Ok(user);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +116,9 @@ namespace Ecommerce01WebApiMVC.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProductExists(int id)
+        private bool UserExists(int id)
         {
-            return db.Products.Count(e => e.ProductId == id) > 0;
+            return db.Users.Count(e => e.UserId == id) > 0;
         }
     }
 }

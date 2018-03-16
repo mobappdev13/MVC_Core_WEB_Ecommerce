@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace Ecommerce01WebApiMVC
 {
@@ -42,18 +43,17 @@ namespace Ecommerce01WebApiMVC
             // config.Formatters.Remove(config.Formatters.XmlFormatter);
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             //response only json (1)
-            //config.Formatters.Remove(config.Formatters.XmlFormatter);
-            //response only xml (2)
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
             //config.Formatters.Remove(config.Formatters.JsonFormatter);
-            //thinking to browsers (3)
-            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add
-            //    (new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
-            config.Formatters.Add(new CustomJsonFormatter());   
-
+            //
+            json.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
         }
 
     }
 }
-//GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(
-//new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
+//config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+//config.Formatters.Add(new CustomJsonFormatter());
+
+

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01", "Ecommerce01.csproj", "{7DFCCF1C-91C1-4315-9657-BD9DA09F0E2F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B35775A8-D32C-4EB1-88CD-DE993FD4A9CB} = {B35775A8-D32C-4EB1-88CD-DE993FD4A9CB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01WebApiMVC", "..\Ecommerce01WebApiMVC\Ecommerce01WebApiMVC.csproj", "{B35775A8-D32C-4EB1-88CD-DE993FD4A9CB}"
 EndProject

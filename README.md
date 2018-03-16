@@ -6,5 +6,5 @@ multi impresa e multi user.
 Gestisce diversi tipologie di user
 In un secondo momento: la web app proseguira con lo sviluppo front end (xamarin)- e/o android.
 
-![immagine delle categorie and API Products](https://github.com/mobappdev13/MVC_Core_WEB_Ecommerce/blob/newEcommerce/Categories.PNG,
-https://github.com/mobappdev13/MVC_Core_WEB_Ecommerce/blob/newEcommerce/ApiProducts.PNG)
+![immagine delle categorie](https://github.com/mobappdev13/MVC_Core_WEB_Ecommerce/blob/newEcommerce/Categories.PNG)
+![web API PRODUCTS](https://github.com/mobappdev13/MVC_Core_WEB_Ecommerce/blob/newEcommerce/ApiProducts.PNG)

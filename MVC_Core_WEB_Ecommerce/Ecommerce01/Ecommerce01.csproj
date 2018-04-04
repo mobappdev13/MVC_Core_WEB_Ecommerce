@@ -88,6 +88,9 @@
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Cors.5.2.4\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,6 +102,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Cors.5.2.4\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -278,20 +284,26 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\SupplierClassesController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\SuppliersControllerOLD.cs" />
     <Compile Include="Controllers\TaxesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WarehousesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802271517031_InitialCreate.cs" />
-    <Compile Include="Migrations\201802271517031_InitialCreate.Designer.cs">
-      <DependentUpon>201802271517031_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201804031843514_InitialCreate.cs" />
+    <Compile Include="Migrations\201804031843514_InitialCreate.Designer.cs">
+      <DependentUpon>201804031843514_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802271526591_withData.cs" />
-    <Compile Include="Migrations\201802271526591_withData.Designer.cs">
-      <DependentUpon>201802271526591_withData.cs</DependentUpon>
+    <Compile Include="Migrations\201804031912201_Suppliers1.cs" />
+    <Compile Include="Migrations\201804031912201_Suppliers1.Designer.cs">
+      <DependentUpon>201804031912201_Suppliers1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031930475_Suppliers2.cs" />
+    <Compile Include="Migrations\201804031930475_Suppliers2.Designer.cs">
+      <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -311,6 +323,7 @@
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SupplierClasse.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
@@ -352,6 +365,8 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="Ecommerce01ApiDependencyInjection.csproj.user" />
+    <Content Include="Ecommerce01DataAccess.csproj" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -440,7 +455,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\0script.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -511,11 +526,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Warehouses\Create.cshtml" />
     <Content Include="Views\Warehouses\Delete.cshtml" />
     <Content Include="Views\Warehouses\Details.cshtml" />
@@ -526,11 +536,6 @@
     <Content Include="Views\States\Details.cshtml" />
     <Content Include="Views\States\Edit.cshtml" />
     <Content Include="Views\States\Index.cshtml" />
-    <Content Include="Views\Suppliers\Create.cshtml" />
-    <Content Include="Views\Suppliers\Delete.cshtml" />
-    <Content Include="Views\Suppliers\Details.cshtml" />
-    <Content Include="Views\Suppliers\Edit.cshtml" />
-    <Content Include="Views\Suppliers\Index.cshtml" />
     <Content Include="Views\Taxes\Create.cshtml" />
     <Content Include="Views\Taxes\Delete.cshtml" />
     <Content Include="Views\Taxes\Details.cshtml" />
@@ -551,6 +556,26 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\SuppliersOLD\Create.cshtml" />
+    <Content Include="Views\SuppliersOLD\Delete.cshtml" />
+    <Content Include="Views\SuppliersOLD\Details.cshtml" />
+    <Content Include="Views\SuppliersOLD\Edit.cshtml" />
+    <Content Include="Views\SuppliersOLD\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\SupplierClasses\Create.cshtml" />
+    <Content Include="Views\SupplierClasses\Delete.cshtml" />
+    <Content Include="Views\SupplierClasses\Details.cshtml" />
+    <Content Include="Views\SupplierClasses\Edit.cshtml" />
+    <Content Include="Views\SupplierClasses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -569,18 +594,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802271517031_InitialCreate.resx">
-      <DependentUpon>201802271517031_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802271526591_withData.resx">
-      <DependentUpon>201802271526591_withData.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804031843514_InitialCreate.resx">
+      <DependentUpon>201804031843514_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031912201_Suppliers1.resx">
+      <DependentUpon>201804031912201_Suppliers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031930475_Suppliers2.resx">
+      <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

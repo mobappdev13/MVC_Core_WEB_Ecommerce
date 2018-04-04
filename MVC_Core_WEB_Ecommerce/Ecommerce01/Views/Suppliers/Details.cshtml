@@ -11,61 +11,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <strong>@Html.DisplayNameFor(model => model.UserName)</strong>
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.UserName)
         </dd>
+
         <dt>
-            <strong>@Html.DisplayNameFor(model => model.FirstName)</strong>
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
-            <strong>@Html.DisplayNameFor(model => model.LastName)</strong>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.Phone)</strong>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.Address)</strong>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.City.Name)</strong>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.Departament.Name)</strong>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Departament.Name)
-        </dd>
-
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.Province.Name)</strong>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Province.Name)
-        </dd>
-        <dt>
-            <strong>@Html.DisplayNameFor(model => model.DateCreated)</strong>
+            @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
 
         <dd>
@@ -73,11 +35,114 @@
         </dd>
 
         <dt>
-            <strong>@Html.DisplayNameFor(model => model.IsfavoriteSupplier)</strong>
+            @Html.DisplayNameFor(model => model.PartitaIva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartitaIva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodiceFiscale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodiceFiscale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteHttp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteHttp)
+            <p><hr /></p>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsfavoriteSupplier)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsfavoriteSupplier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplierClasses.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplierClasses.Description)
+            <p><hr /></p>
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneMobil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneMobil)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fax)
+            <p><hr /></p>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locality)
+            <p><hr /></p>
         </dd>
 
     </dl>
@@ -90,7 +155,7 @@
     </a>
     @*@Html.ActionLink("Modifica", "Edit", new { id = Model.XXXId }, new { @class = "btn btn-info" })*@
 
-    <a href="@Url.Action("Edit", "Suppliers", new {id = Model.SupplierId })" class="btn btn-default btn-sm">
+    <a href="@Url.Action("Edit", "Customers", new {id = Model.SupplierId })" class="btn btn-default btn-sm">
         <i aria-hidden="true" class="tn btn-default btn-sm far fa-edit fa-2x text-info" title="Modifica"></i>
         Modifica
         <span class="sr-only">Modifica</span>

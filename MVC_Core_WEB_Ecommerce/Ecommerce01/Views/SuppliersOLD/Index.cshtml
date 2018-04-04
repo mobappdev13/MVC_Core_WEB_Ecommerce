@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<Ecommerce01.Models.Supplier>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Fornitori";
+}
+
+<h2>Fornitori</h2>
+
+<p>
+    @*@Html.ActionLink("Crea Nuovo", "Create", new { }, new { @class = "btn btn-info" })*@
+    <a href="@Url.Action(
+            "Create",
+            "Suppliers",
+            new { })" class="btn btn-default btn-xs">
+        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-3x text-success" title="Crea Nuovo"></i>
+        Crea Nuovo
+        <span class="sr-only">Crea Nuovo</span>
+    </a>
+</p>
+<table class="table table-responsive table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Province.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsfavoriteSupplier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DateCreated)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Province.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departament.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsfavoriteSupplier)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                @* @Html.ActionLink("Modifica", "Edit", new { id = item.SupplierId }, new { @class = "btn btn-info" }) |*@
+                @*  <a href="@Url.Action("Edit", "Suppliers", new { id = item.SupplierId })" class="btn btn-default"> *@
+                <a href="@Url.Action("Edit", "Suppliers", new { id = item.SupplierId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                    <span class="sr-only">Modifica</span>
+                </a>
+                <a href="@Url.Action("Details", "Suppliers", new { id = item.SupplierId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" title="Dettagli"></i>
+                    <span class="sr-only">Dettagli</span>
+                </a>
+                <a href="@Url.Action("Delete", "Suppliers", new { id = item.SupplierId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                    <span class="sr-only">Elimina</span>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+@if (Model.PageCount > 1)
+{
+    <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter = ViewBag.CurrentFilter
+    }));
+}﻿

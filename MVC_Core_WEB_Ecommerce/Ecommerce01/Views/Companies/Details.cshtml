@@ -1,7 +1,7 @@
 ﻿@model Ecommerce01.Models.Company
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Dettagli";
 }
 
 <h2>Dettagli</h2>
@@ -142,3 +142,13 @@
         <span class="sr-only">Modifica</span>
     </a>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/script.js")
+    @* per attivare solo le provincie da una determinanata regione *@
+    <script type="text/javascript">
+         var Url1 = '@Url.Action("GetProvinces", "Generico")';
+         var Url2 = '@Url.Action("GetProvinces", "Generico")';
+        var Url3 = '@Url.Action("GetCities", "Generico")';
+    </script>
+}

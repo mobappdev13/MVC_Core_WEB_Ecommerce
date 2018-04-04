@@ -124,4 +124,6 @@ namespace Ecommerce01WebApi2.Controllers
             return entities.Products.Count(e => e.ProductId == id) > 0;
         }
     }
+    // public HttpResponseMessage Put(int id, [FromBody] Category category)
+    //can be  HttpResponseMessage Put([FromBody]int id, [FromUri] Category category)
 }

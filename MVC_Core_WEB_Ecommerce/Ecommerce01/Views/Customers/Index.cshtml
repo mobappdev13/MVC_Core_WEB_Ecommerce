@@ -1,9 +1,12 @@
-﻿@model PagedList.IPagedList<Ecommerce01.Models.Customer>
-@using PagedList.Mvc;
+﻿@model IEnumerable<Ecommerce01.Models.Customer>
 
 @{
     ViewBag.Title = "Clienti";
 }
+
+@{ var  femmina = "Femmina"; }
+@{ var maschio = "Maschio"; }
+@{ var privato = "Privato"; }
 
 <h2>Clienti</h2>
 
@@ -18,37 +21,39 @@
         <span class="sr-only">Crea Nuovo</span>
     </a>
 </p>
-<table class="table">
+<table class="table table-responsive table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().FirstName)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().LastName)
+            @Html.DisplayNameFor(model => model.LastName)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().DateBirth)
+            @Html.DisplayNameFor(model => model.DateBirth)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+            @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
+            @Html.DisplayNameFor(model => model.Phone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.City.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Province.Name)
+            @Html.DisplayNameFor(model => model.Province.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
+            @Html.DisplayNameFor(model => model.Departament.Name)
         </th>
-        
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -62,6 +67,16 @@
             </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td align="center">
+                @if (item.Gender == "F")
+                {@femmina}
+                else if(item.Gender == "M")
+                {@maschio}
+                else
+                {@privato}
+
+                @*//@Html.DisplayFor(modelItem => item.Gender)*@
             </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.DateBirth)
@@ -81,12 +96,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Departament.Name)
             </td>
-            
+           
         </tr>
         <tr>
-            <td colspan="5">
-                @*@Html.ActionLink("Modifica", "Edit", new { id = item.CustomerId }, new { @class = "btn btn-info" })*@
-                @*  <a href="@Url.Action("Edit", "Customers", new { id = item.SupplierId })" class="btn btn-default"> *@
+            <td colspan="8">
+                @* @Html.ActionLink("Modifica", "Edit", new { id = item.SupplierId }, new { @class = "btn btn-info" }) |*@
+                @*  <a href="@Url.Action("Edit", "Suppliers", new { id = item.SupplierId })" class="btn btn-default"> *@
                 <a href="@Url.Action("Edit", "Customers", new { id = item.CustomerId })" class="btn btn-default btn-sm">
                     <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
                     <span class="sr-only">Modifica</span>
@@ -101,16 +116,7 @@
                 </a>
             </td>
         </tr>
+    
 }
+
 </table>
-@if (Model.PageCount > 1)
-{
-    <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new
-    {
-        page,
-        sortOrder = ViewBag.CurrentSort,
-        currentFilter = ViewBag.CurrentFilter
-    }));
-}﻿

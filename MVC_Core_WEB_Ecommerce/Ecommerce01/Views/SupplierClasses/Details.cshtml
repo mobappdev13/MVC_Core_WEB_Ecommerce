@@ -1,0 +1,36 @@
+﻿@model Ecommerce01.Models.SupplierClasse
+
+@{
+    ViewBag.Title = "Dettagli";
+}
+
+<h2>Dettagli</h2>
+
+<div>
+    <h4>Tipologia Fornitore</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+    <a href="@Url.Action("Index", "SupplierClasses", new { })" class="btn btn-default btn-sm">
+        <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+        <span class="sr-only">Ritorna</span>
+    </a>
+    @*@Html.ActionLink("Modifica", "Edit", new { id = Model.XXXId }, new { @class = "btn btn-info" })*@
+
+    <a href="@Url.Action("Edit", "SupplierClasses", new {id = Model.SupplierClasseId })" class="btn btn-default btn-sm">
+        <i aria-hidden="true" class="tn btn-default btn-sm far fa-edit fa-2x text-info" title="Modifica"></i>
+        Modifica
+        <span class="sr-only">Modifica</span>
+    </a>
+</div>

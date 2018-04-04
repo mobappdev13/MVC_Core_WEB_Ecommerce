@@ -11,7 +11,7 @@ namespace Ecommerce01WebApi2.Controllers
     public class CategoriesController : ApiController
     {
         //add methods for Web API 1.0
-        [HttpGet]
+        //[HttpGet]
         public HttpResponseMessage Get()
         {
             using (Ecommerce19Entities entities = new Ecommerce19Entities())
@@ -23,7 +23,7 @@ namespace Ecommerce01WebApi2.Controllers
         }
 
         //add
-        [HttpGet]
+        //[HttpGet]
         public HttpResponseMessage Get(int id)
         {
             //db context
@@ -46,7 +46,7 @@ namespace Ecommerce01WebApi2.Controllers
         }
 
         //add
-        [HttpPost]
+        //[HttpPost]
         public  HttpResponseMessage Post([FromBody]Category category)
         {
             try
@@ -73,7 +73,7 @@ namespace Ecommerce01WebApi2.Controllers
         }
 
         //add
-        [HttpDelete]
+       // [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
             try
@@ -101,7 +101,7 @@ namespace Ecommerce01WebApi2.Controllers
             
         }
 
-        [HttpPut]
+       // [HttpPut]
         public HttpResponseMessage Put(int id, [FromBody] Category category)
         {
             try
@@ -130,5 +130,7 @@ namespace Ecommerce01WebApi2.Controllers
                return message;
             }
         }
+        // public HttpResponseMessage Put(int id, [FromBody] Category category)
+        //can be  HttpResponseMessage Put([FromBody]int id, [FromUri] Category category)
     }
 }

@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using Ecommerce01.Classes;
 using Ecommerce01.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace Ecommerce01.Controllers
 {
@@ -19,34 +17,29 @@ namespace Ecommerce01.Controllers
         private Ecommerce01Context db = new Ecommerce01Context();
         private const int itemsonPage = 2;
         // GET: Customers
-        public ActionResult Index(int? page = null)
+        //public ActionResult Index(int? page = null)
+        public ActionResult Index()
         {
-            page = (page ?? 1);
+            //page = (page ?? 1);
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
             var customerscompany = (from cu in db.Customers
                                     join cc in db.CompanyCustomers on cu.CustomerId equals cc.CustomerId
                                     join co in db.Companies on cc.CompanyId equals co.CompanyId
                                     where co.CompanyId == user.CompanyId
-                                    select new { cu }).ToList();
+                                    select cu)
+                                    .Include(c => c.Departament)
+                                    .Include(c => c.Province)
+                                    .Include(c => c.City)
+                                    .OrderBy(c => c.UserName)
+                                    .ToList();
 
-            var customers = new List<Customer>();
+            ////var customers = customerscompany.Select(item => item.cu).ToList();
+            //customers = customers.OrderBy(c => c.UserName).ToList();
 
-            foreach (var item in customerscompany)
-            {
-                customers.Add(item.cu);
-            }
-
-           
-            return View(customers.OrderBy(c=> c.UserName)
-                .ThenBy( c=> c.DepartamentId)
-                .ThenBy(c => c.ProvinceId)
-                .ThenBy(c => c.CityId)
-                .ToPagedList((int)page, itemsonPage));
+            return View(customerscompany);
+            //.ToPagedList((int)page, itemsonPage));
         }
-
-
-
 
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
@@ -56,12 +49,17 @@ namespace Ecommerce01.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var customer = db.Customers.Find(id);
+            var customer = db.Customers
+                .Find(id);
 
             if (customer == null)
             {
                 return HttpNotFound();
             }
+
+            customer.City = db.Cities.FirstOrDefault(c => c.CityId == customer.CityId);
+            customer.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == customer.DepartamentId);
+            customer.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == customer.ProvinceId);
             return View(customer);
         }
 
@@ -71,58 +69,60 @@ namespace Ecommerce01.Controllers
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name");
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(0), "ProvinceId", "Name");
             ViewBag.CityId = new SelectList(DropDownHelper.GetCities(0), "CityId", "Name");
+            ViewBag.Gender = new SelectList(DropDownHelper.GetGenders(), "Text", "Value");
             return View();
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,UserName,FirstName,LastName,DateBirth,Phone,Address,DepartamentId,ProvinceId,CityId")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,UserName,FirstName,LastName,DateBirth,Phone,Address,DepartamentId,ProvinceId,CityId, Gender")] Customer customer)
         {
-          if (ModelState.IsValid)
-           {
-            using (var tran = db.Database.BeginTransaction(IsolationLevel.Serializable))
+            if (ModelState.IsValid)
             {
-                try
+                using (var tran = db.Database.BeginTransaction(IsolationLevel.Serializable))
                 {
-                   db.Customers.Add(customer);
-                    var response = DbHelper.SaveChanges(db);
-                    if (response.Succeeded)
+                    try
                     {
-                        UsersHelper.CreateUserAsp(customer.UserName, "Customer");
-
-                        var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-
-                        if (user == null)
+                        db.Customers.Add(customer);
+                        var response = DbHelper.SaveChanges(db);
+                        if (response.Succeeded)
                         {
-                            return RedirectToAction("Index", "Home");
+                            UsersHelper.CreateUserAsp(customer.UserName, "Customer");
+
+                            var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+
+                            if (user == null)
+                            {
+                                return RedirectToAction("Index", "Home");
+                            }
+                            var companyCustomer = new CompanyCustomer()
+                            {
+                                CompanyId = user.CompanyId,
+                                CustomerId = customer.CustomerId
+                            };
+                            db.CompanyCustomers.Add(companyCustomer);
+                            db.SaveChanges();
+                            tran.Commit();
+                            return RedirectToAction("Index");
                         }
-                        var companyCustomer = new CompanyCustomer()
+                        else
                         {
-                            CompanyId = user.CompanyId,
-                            CustomerId = customer.CustomerId
-                        };
-                        db.CompanyCustomers.Add(companyCustomer);
-                        db.SaveChanges();
-                        tran.Commit();
-                        return RedirectToAction("Index");
+                            ModelState.AddModelError(string.Empty, response.Message);
+                            tran.Rollback();
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        ModelState.AddModelError(string.Empty, response.Message);
+                        ModelState.AddModelError(string.Empty, ex.Message);
                         tran.Rollback();
                     }
                 }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError(string.Empty, ex.Message);
-                    tran.Rollback();
-                }
             }
-        }
             ViewBag.CityId = new SelectList(DropDownHelper.GetCities(customer.ProvinceId), "CityId", "Name", customer.CityId);
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", customer.DepartamentId);
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(customer.DepartamentId), "ProvinceId", "Name", customer.ProvinceId);
+            ViewBag.Gender = new SelectList(DropDownHelper.GetGenders(), "Text", "Value", customer.Gender);
             return View(customer);
         }
 
@@ -143,6 +143,7 @@ namespace Ecommerce01.Controllers
             ViewBag.CityId = new SelectList(DropDownHelper.GetCities(customer.ProvinceId), "CityId", "Name", customer.CityId);
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", customer.DepartamentId);
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(customer.DepartamentId), "ProvinceId", "Name", customer.ProvinceId);
+            ViewBag.Gender = new SelectList(DropDownHelper.GetGenders(), "Text", "Value", customer.Gender);
             return View(customer);
         }
 
@@ -151,7 +152,7 @@ namespace Ecommerce01.Controllers
         // Per ulteriori dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,UserName,FirstName,LastName,DateBirth,Phone,Address,DepartamentId,ProvinceId,CityId")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,UserName,FirstName,LastName,DateBirth,Phone,Address,DepartamentId,ProvinceId,CityId,Gender")] Customer customer)
         {
             try
             {
@@ -176,12 +177,13 @@ namespace Ecommerce01.Controllers
             }
             catch (Exception ex)
             {
-                 ModelState.AddModelError("in edit post customer -", ex.Message);
+                ModelState.AddModelError("in edit post customer -", ex.Message);
             }
-        
-                ViewBag.CityId = new SelectList(DropDownHelper.GetCities(customer.ProvinceId), "CityId", "Name", customer.CityId);
-                ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", customer.DepartamentId);
-                ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(customer.DepartamentId), "ProvinceId", "Name", customer.ProvinceId);
+
+            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(customer.ProvinceId), "CityId", "Name", customer.CityId);
+            ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", customer.DepartamentId);
+            ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(customer.DepartamentId), "ProvinceId", "Name", customer.ProvinceId);
+            ViewBag.Gender = new SelectList(DropDownHelper.GetGenders(), "Text", "Value", customer.Gender);
             return View(customer);
         }
 
@@ -194,11 +196,14 @@ namespace Ecommerce01.Controllers
             }
 
             var customer = db.Customers.Find(id);
-
+           
             if (customer == null)
             {
                 return HttpNotFound();
             }
+            customer.City = db.Cities.FirstOrDefault(c => c.CityId == customer.CityId);
+            customer.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == customer.DepartamentId);
+            customer.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == customer.ProvinceId);
             return View(customer);
         }
 
@@ -243,6 +248,7 @@ namespace Ecommerce01.Controllers
             ViewBag.CityId = new SelectList(DropDownHelper.GetCities(customer.ProvinceId), "CityId", "Name", customer.CityId);
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", customer.DepartamentId);
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(customer.DepartamentId), "ProvinceId", "Name", customer.ProvinceId);
+            ViewBag.Gender = new SelectList(DropDownHelper.GetGenders(), "Text", "Value", customer.Gender);
             return View(customer);
         }
 

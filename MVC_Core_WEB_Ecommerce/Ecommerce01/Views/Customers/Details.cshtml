@@ -9,8 +9,8 @@
 <div>
     <h4>Cliente</h4>
     <hr />
+    
     <dl class="dl-horizontal">
-       
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
@@ -54,16 +54,26 @@
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.City.Name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.City.Name)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departament.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departament.Name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Province.Name)
         </dt>
@@ -71,13 +81,13 @@
         <dd>
             @Html.DisplayFor(model => model.Province.Name)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Departament.Name)
+            @Html.DisplayNameFor(model => model.Gender)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Departament.Name)
+            @Html.DisplayFor(model => model.Gender)
         </dd>
-
 
     </dl>
 </div>
@@ -89,7 +99,7 @@
     </a>
     @*@Html.ActionLink("Modifica", "Edit", new { id = Model.XXXId }, new { @class = "btn btn-info" })*@
 
-    <a href="@Url.Action("Edit", "Customers", new {id = Model.CustomerId})" class="btn btn-default btn-sm">
+    <a href="@Url.Action("Edit", "Customers", new {id = Model.CustomerId })" class="btn btn-default btn-sm">
         <i aria-hidden="true" class="tn btn-default btn-sm far fa-edit fa-2x text-info" title="Modifica"></i>
         Modifica
         <span class="sr-only">Modifica</span>

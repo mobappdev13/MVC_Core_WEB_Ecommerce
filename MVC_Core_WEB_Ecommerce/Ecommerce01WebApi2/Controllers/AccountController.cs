@@ -19,7 +19,7 @@ using Ecommerce01WebApi2.Results;
 
 namespace Ecommerce01WebApi2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {

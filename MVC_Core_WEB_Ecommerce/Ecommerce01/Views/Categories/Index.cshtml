@@ -20,50 +20,50 @@
 </p>
 
 <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered">
+    <table class="table table-striped">
         @*<table class="table">*@
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
-                </th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+            </th>
+            <th></th>
+        </tr>
 
-            @foreach (var item in Model)
+        @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @*  <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-default"> *@
-                      <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })"  class="btn btn-default btn-sm">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @*  <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-default"> *@
+                    <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
                         <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
-                         <span class="sr-only">Modifica</span>  
-                        </a>
-                        <a href="@Url.Action("Details", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
-                            <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
-                            <span class="sr-only">Dettagli</span>
-                        </a>
-                        <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
-                            <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger"  title="Elimina"></i>
-                            <span class="sr-only">Elimina</span>
-                        </a>
-                    </td>
-                </tr>
-            }
+                        <span class="sr-only">Modifica</span>
+                    </a>
+                    <a href="@Url.Action("Details", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
+                        <span class="sr-only">Dettagli</span>
+                    </a>
+                    <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                        <span class="sr-only">Elimina</span>
+                    </a>
+                </td>
+            </tr>
+        }
 
         </table>
-</div>
-        @if (Model.PageCount > 1)
-        {
-            <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
-            @Html.PagedListPager(Model, page => Url.Action("Index",
+    </div>
+    @if (Model.PageCount > 1)
+    {
+        <h6>@Html.Raw(string.Format("Pagina: {0}, di: {1}", (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber), Model.PageCount))</h6>;
+        @Html.PagedListPager(Model, page => Url.Action("Index",
     new
     {
-        page,
-        sortOrder = ViewBag.CurrentSort,
-        currentFilter = ViewBag.CurrentFilter
+    page,
+    sortOrder = ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter
     }));
-        }﻿
+}﻿
 

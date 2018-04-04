@@ -5,14 +5,15 @@
 }
 
 <h2>Elimina</h2>
+<h3 class="text-danger">E' sicuro di volere eliminare questo registro ?</h3>
 
-<h3>E' sicuro di volere eliminare questo registro ?</h3>
 <div>
     <h4>Cliente</h4>
     <hr />
     <dl class="dl-horizontal">
+        
         <dt>
-        @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
@@ -50,25 +51,22 @@
         <dd>
             @Html.DisplayFor(model => model.Phone)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.City.Name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.City.Name)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Province.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Province.Name)
-        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Departament.Name)
         </dt>
@@ -76,12 +74,26 @@
         <dd>
             @Html.DisplayFor(model => model.Departament.Name)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
 
         <div class="form-actions no-color">
             @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@

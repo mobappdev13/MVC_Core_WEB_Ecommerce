@@ -33,11 +33,17 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Province province = db.Provinces.Find(id);
+            var province = db.Provinces.Find(id);
+
             if (province == null)
             {
                 return HttpNotFound();
             }
+            //province.City = db.Cities.FirstOrDefault(c => c.CityId == province.CityId);
+            province.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == province.DepartamentId);
+            // province.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == province.ProvinceId);
+
+
             return View(province);
         }
 
@@ -174,11 +180,16 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Province province = db.Provinces.Find(id);
+            var province = db.Provinces.Find(id);
             if (province == null)
             {
                 return HttpNotFound();
             }
+            //province.City = db.Cities.FirstOrDefault(c => c.CityId == province.CityId);
+            province.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == province.DepartamentId);
+            // province.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == province.ProvinceId);
+
+
             return View(province);
         }
 

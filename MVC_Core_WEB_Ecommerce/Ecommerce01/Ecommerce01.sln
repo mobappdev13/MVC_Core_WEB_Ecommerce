@@ -4,15 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01", "Ecommerce01.csproj", "{7DFCCF1C-91C1-4315-9657-BD9DA09F0E2F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA} = {B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01WebApiDMVC", "..\Ecommerce01WebApiDMVC\Ecommerce01WebApiDMVC.csproj", "{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01WebApi2", "..\Ecommerce01WebApi2\Ecommerce01WebApi2.csproj", "{158E7401-8210-45DB-B9CC-4877CDADF346}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce01DataAccess", "Ecommerce01DataAccess\Ecommerce01DataAccess.csproj", "{0DBC6B49-E4EF-41D8-AED7-7474186B6333}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,18 +15,6 @@ Global
 		{7DFCCF1C-91C1-4315-9657-BD9DA09F0E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DFCCF1C-91C1-4315-9657-BD9DA09F0E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DFCCF1C-91C1-4315-9657-BD9DA09F0E2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B04683B3-6B82-4FF0-BB0C-95F9FCC4DEFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{158E7401-8210-45DB-B9CC-4877CDADF346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{158E7401-8210-45DB-B9CC-4877CDADF346}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{158E7401-8210-45DB-B9CC-4877CDADF346}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{158E7401-8210-45DB-B9CC-4877CDADF346}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DBC6B49-E4EF-41D8-AED7-7474186B6333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DBC6B49-E4EF-41D8-AED7-7474186B6333}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DBC6B49-E4EF-41D8-AED7-7474186B6333}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DBC6B49-E4EF-41D8-AED7-7474186B6333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

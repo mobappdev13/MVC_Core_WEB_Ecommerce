@@ -35,11 +35,18 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var company = db.Companies.Find(id);
+
+           var company = db.Companies.Find(id);
+
             if (company == null)
             {
                 return HttpNotFound();
             }
+
+            company.City = db.Cities.FirstOrDefault(c => c.CityId == company.CityId);
+            company.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == company.DepartamentId);
+            company.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == company.ProvinceId);
+           
             return View(company);
         }
 
@@ -169,6 +176,10 @@ namespace Ecommerce01.Controllers
             {
                 return HttpNotFound();
             }
+
+            company.City = db.Cities.FirstOrDefault(c => c.CityId == company.CityId);
+            company.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == company.DepartamentId);
+            company.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == company.ProvinceId);
             return View(company);
         }
 

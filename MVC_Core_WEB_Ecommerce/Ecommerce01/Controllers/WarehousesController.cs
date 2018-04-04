@@ -42,12 +42,18 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var warehouse = db.Warehouses.Find(id);
 
             if (warehouse == null)
             {
                 return HttpNotFound();
             }
+
+           
+            warehouse.City = db.Cities.FirstOrDefault(s => s.CityId == warehouse.CityId);
+            warehouse.Departament = db.Departaments.FirstOrDefault(s => s.DepartamentId == warehouse.DepartamentId);
+            warehouse.Province = db.Provinces.FirstOrDefault(s => s.ProvinceId == warehouse.ProvinceId);
             return View(warehouse);
         }
 
@@ -86,75 +92,34 @@ namespace Ecommerce01.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "WarehouseId,CompanyId,Name,Phone,Address,DepartamentId,ProvinceId,CityId")] Warehouse warehouse)
         {
-            try
+            if (ModelState.IsValid)
             {
-                using (var transaction = db.Database.BeginTransaction(IsolationLevel.Serializable))
+                db.Warehouses.Add(warehouse);
+                try
                 {
-                    if (ModelState.IsValid)
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception exception)
+                {
+
+                    if (exception.InnerException?.InnerException != null && exception.InnerException.InnerException.Message.Contains("_Index"))
                     {
-                        try
-                        {
-                            //save only warehouse
-                            db.Warehouses.Add(warehouse);
-                            var response = DbHelper.SaveChanges(db);
-                            if (response.Succeeded)
-                            {
-                                //attention transaction
-
-                                var inventory = new Inventory()
-                                {
-                                        ProductId = 1,
-                                       // SupplierId = 1,
-                                        Stock = 0
-                                };
-
-                                db.Inventories.Add(inventory);
-                                var response1 = DbHelper.SaveChanges(db);
-                                if (response1.Succeeded)
-                                {
-                                    transaction.Commit();
-                                    return RedirectToAction("Index");
-                                }
-                                else
-                                {
-                                    ModelState.AddModelError(string.Empty, response1.Message);
-                                    transaction.Rollback();
-                                }
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(string.Empty, response.Message);
-                                transaction.Rollback();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            ModelState.AddModelError(string.Empty, ex.Message);
-                            transaction.Rollback();
-                        }
+                        ModelState.AddModelError(string.Empty, "There are a record with the same value");
                     }
-                    ViewBag.CityId = new SelectList(DropDownHelper.GetCities(warehouse.ProvinceId), "CityId", "Name", warehouse.CityId);
-                    ViewBag.CompanyId = new SelectList(db.Companies, "CompanyId", "Name", warehouse.CompanyId);
-                    ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", warehouse.DepartamentId);
-                    ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(warehouse.DepartamentId), "ProvinceId", "Name", warehouse.ProvinceId);
-                    return View(warehouse);
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, exception.Message);
+                    }
                 }
             }
-            catch (Exception ex2)
-            {
-                ModelState.AddModelError(string.Empty, ex2.Message);
-
-            }
-            //return RedirectToAction("Index");
+            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(warehouse.ProvinceId), "CityId", "Name", warehouse.CityId);
+            ViewBag.CompanyId = new SelectList(db.Companies, "CompanyId", "Name", warehouse.CompanyId);
+            ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", warehouse.DepartamentId);
+            ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(warehouse.DepartamentId), "ProvinceId", "Name", warehouse.ProvinceId);
             return View(warehouse);
         }
                
-
-
-
-
-
-
         //    ///
         //    using (var transaction = db.Database.BeginTransaction(IsolationLevel.Serializable))
         //    {
@@ -235,8 +200,18 @@ namespace Ecommerce01.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(warehouse).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+                //attention
+                return View(warehouse);
             }
             ViewBag.CityId = new SelectList(DropDownHelper.GetCities(warehouse.ProvinceId), "CityId", "Name", warehouse.CityId);
             //ViewBag.CompanyId = new SelectList(db.Companies, "CompanyId", "Name", warehouse.CompanyId);
@@ -259,7 +234,11 @@ namespace Ecommerce01.Controllers
             {
                 return HttpNotFound();
             }
+            warehouse.City = db.Cities.FirstOrDefault(s => s.CityId == warehouse.CityId);
+            warehouse.Departament = db.Departaments.FirstOrDefault(s => s.DepartamentId == warehouse.DepartamentId);
+            warehouse.Province = db.Provinces.FirstOrDefault(s => s.ProvinceId == warehouse.ProvinceId);
             return View(warehouse);
+
         }
 
         // POST: Warehouses/Delete/5
@@ -269,8 +248,19 @@ namespace Ecommerce01.Controllers
         {
             var warehouse = db.Warehouses.Find(id);
             db.Warehouses.Remove(warehouse);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError(string.Empty, exception.Message);
+            }
+            //attention ???
+            return View(warehouse);
+
         }
 
         protected override void Dispose(bool disposing)

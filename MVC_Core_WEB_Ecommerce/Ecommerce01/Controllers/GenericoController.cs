@@ -40,6 +40,15 @@ namespace Ecommerce01.Controllers
             return Json(companies);
         }
 
+        public JsonResult GetSupplierClasses(int supplierClasseId)
+        {
+            //can be
+            db.Configuration.ProxyCreationEnabled = false;
+            var supplierclasses = db.SupplierClasses.Where(s => s.SupplierClasseId == supplierClasseId);
+            // can be  return Json(modelList,JsonRequestBehavior.AllowGet);
+            return Json(supplierclasses);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

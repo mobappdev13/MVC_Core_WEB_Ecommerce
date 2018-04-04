@@ -20,7 +20,8 @@
     </a>
 
 </p>
-<table class="table">
+
+<table class="table table-responsive table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
@@ -40,7 +41,7 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
         </th>
-        <th></th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -67,7 +68,7 @@
 
         </tr>
         <tr>
-            <td colspan="5">
+            <td colspan="6">
                 @*@Html.ActionLink("Modifica", "Edit", new { id = item.WarehouseId }, new { @class = "btn btn-info" }) |*@
                 @*  <a href="@Url.Action("Edit", "Warehouses", new { id = item.XXXId })" class="btn btn-default"> *@
                 <a href="@Url.Action("Edit", "Warehouses", new { id = item.WarehouseId})" class="btn btn-default btn-sm">
@@ -84,7 +85,7 @@
                 </a>
             </td>
         </tr>
-}
+    }
 
 </table>
 @if (Model.PageCount > 1)

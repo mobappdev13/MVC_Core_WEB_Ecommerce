@@ -37,12 +37,18 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            City city = db.Cities.Find(id);
+            var city = db.Cities.Find(id);
+
             if (city == null)
             {
                 return HttpNotFound();
             }
+           // city.City = db.Cities.FirstOrDefault(c => c.CityId == company.CityId);
+            city.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == city.DepartamentId);
+            city.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == city.ProvinceId);
+
             return View(city);
+            
         }
 
         // GET: Cities/Create
@@ -171,11 +177,15 @@ namespace Ecommerce01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            City city = db.Cities.Find(id);
+            var city = db.Cities.Find(id);
             if (city == null)
             {
                 return HttpNotFound();
             }
+
+            city.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == city.DepartamentId);
+            city.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == city.ProvinceId);
+
             return View(city);
         }
 
@@ -190,18 +200,18 @@ namespace Ecommerce01.Controllers
             return RedirectToAction("Index");
         }
 
-        //////add
-        ////[HttpGet]
-        public JsonResult GetProvinces(int departamentId)
-        {
-            //can be
-            //https://stackoverflow.com/questions/4596371/what-are-the-downsides-to-turning-off-proxycreationenabled-for-ctp5-of-ef-code-f
-            //http://www.c-sharpcorner.com/UploadFile/db2972/json-result-in-controller-sample-in-mvc-day-13/
-            db.Configuration.ProxyCreationEnabled = false;
-            var provinces = db.Provinces.Where(p => p.DepartamentId == departamentId);
-            // can be  return Json(modelList,JsonRequestBehavior.AllowGet);
-            return Json(provinces);
-        }
+        ////////add
+        //////[HttpGet]
+        //public JsonResult GetProvinces(int departamentId)
+        //{
+        //    //can be
+        //    //https://stackoverflow.com/questions/4596371/what-are-the-downsides-to-turning-off-proxycreationenabled-for-ctp5-of-ef-code-f
+        //    //http://www.c-sharpcorner.com/UploadFile/db2972/json-result-in-controller-sample-in-mvc-day-13/
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    var provinces = db.Provinces.Where(p => p.DepartamentId == departamentId);
+        //    // can be  return Json(modelList,JsonRequestBehavior.AllowGet);
+        //    return Json(provinces);
+        //}
 
         protected override void Dispose(bool disposing)
         {

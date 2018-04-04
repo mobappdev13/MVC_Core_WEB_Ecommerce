@@ -45,16 +45,21 @@ namespace Ecommerce01.Controllers
             {
                 return HttpNotFound();
             }
+            user.City = db.Cities.FirstOrDefault(c => c.CityId == user.CityId);
+            user.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == user.DepartamentId);
+            user.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == user.ProvinceId);
+            user.Company = db.Companies.FirstOrDefault(c => c.CompanyId == user.CompanyId);
+
             return View(user);
         }
 
         // GET: Users/Create
         public ActionResult Create()
         {
-            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(0), "CityId", "Name");
-            ViewBag.CompanyId = new SelectList(DropDownHelper.GetCompanies(), "CompanyId", "Name");
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name");
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(0), "ProvinceId", "Name");
+            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(0), "CityId", "Name");
+            ViewBag.CompanyId = new SelectList(DropDownHelper.GetCompanies(), "CompanyId", "Name");
             return View();
         }
 
@@ -104,11 +109,10 @@ namespace Ecommerce01.Controllers
                     }
                 }
             }
-
-            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(user.ProvinceId), "CityId","Name", user.CityId);
-            ViewBag.CompanyId = new SelectList(DropDownHelper.GetCompanies(), "CompanyId", "Name", user.CompanyId);
             ViewBag.DepartamentId = new SelectList(DropDownHelper.GetDepartaments(), "DepartamentId", "Name", user.DepartamentId);
             ViewBag.ProvinceId = new SelectList(DropDownHelper.GetProvinces(user.DepartamentId), "ProvinceId", "Name", user.ProvinceId);
+            ViewBag.CityId = new SelectList(DropDownHelper.GetCities(user.ProvinceId), "CityId","Name", user.CityId);
+            ViewBag.CompanyId = new SelectList(DropDownHelper.GetCompanies(), "CompanyId", "Name", user.CompanyId);
             return View(user);
         }
 
@@ -197,6 +201,10 @@ namespace Ecommerce01.Controllers
                 return HttpNotFound();
             }
 
+            user.City = db.Cities.FirstOrDefault(c => c.CityId == user.CityId);
+            user.Departament = db.Departaments.FirstOrDefault(c => c.DepartamentId == user.DepartamentId);
+            user.Province = db.Provinces.FirstOrDefault(c => c.ProvinceId == user.ProvinceId);
+            user.Company = db.Companies.FirstOrDefault(c => c.CompanyId == user.CompanyId);
             return View(user);
         }
 

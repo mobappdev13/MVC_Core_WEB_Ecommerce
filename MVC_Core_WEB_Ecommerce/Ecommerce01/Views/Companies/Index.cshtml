@@ -19,7 +19,7 @@
         <span class="sr-only">Crea Nuova</span>
     </a>
 </p>
-<table class="table">
+<table class="table table-responsive table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
@@ -28,8 +28,8 @@
             @Html.DisplayNameFor(model => model.FirstOrDefault().City.Name)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().Locality)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Locality)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Province.Name)
         </th>
@@ -40,113 +40,114 @@
             @Html.DisplayNameFor(model => model.FirstOrDefault().AddressO)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().AddressL)
-    </th>*@
-       
+                @Html.DisplayNameFor(model => model.FirstOrDefault().AddressL)
+            </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().PartitaIva)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().CodiceFiscale)
-    </th>*@
-        <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CodiceFiscale)
+            </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
-        </th>
+        </th>*@
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneMobil)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneMobil)
+            </th>*@
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().Fax)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Fax)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
         </th>
         @*<th>
-        @Html.DisplayNameFor(model => model.FirstOrDefault().http)
-    </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().http)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Logo)
         </th>
-        
+
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.City.Name)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Locality)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Province.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Departament.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddressO)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.AddressL)
-        </td>*@
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.PartitaIva)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CodiceFiscale)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PhoneMobil)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Fax)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.http)
-        </td>*@
-        
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
 
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Logo)
-        </td>*@
-        <td>
-            @if (!string.IsNullOrEmpty(item.Logo))
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Locality)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Province.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departament.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressO)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.AddressL)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PartitaIva)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CodiceFiscale)
+                </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PhoneMobil)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.http)
+                </td>*@
+
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Logo)
+                </td>*@
+            <td>
+                @if (!string.IsNullOrEmpty(item.Logo))
                 {
-                <img src="@Url.Content(item.Logo)" alt="Image" style="width:400px;height:400px;max-width: 100%; height: auto;" />
-            }
-        </td>
-    </tr>
-    <tr>
-        <td colspan="5">
-            @*@Html.ActionLink("Modifica", "Edit", new { id = item.CompanyId }, new { @class = "btn btn-info" })*@
-            @*  <a href="@Url.Action("Edit", "Companies", new { id = item.XXXId })" class="btn btn-default"> *@
-            <a href="@Url.Action("Edit", "Companies", new { id = item.CompanyId})" class="btn btn-default btn-sm">
-                <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
-                <span class="sr-only">Modifica</span>
-            </a>
-            <a href="@Url.Action("Details", "Companies", new { id = item.CompanyId })" class="btn btn-default btn-sm">
-                <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
-                <span class="sr-only">Dettagli</span>
-            </a>
-            <a href="@Url.Action("Delete", "Companies", new { id = item.CompanyId })" class="btn btn-default btn-sm">
-                <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
-                <span class="sr-only">Elimina</span>
-            </a>
-        </td>
-    </tr>
-}
+                    <img src="@Url.Content(item.Logo)" alt="Image" style="width:400px;height:400px;max-width: 100%; height: auto;" />
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                @*@Html.ActionLink("Modifica", "Edit", new { id = item.CompanyId }, new { @class = "btn btn-info" })*@
+                @*  <a href="@Url.Action("Edit", "Companies", new { id = item.XXXId })" class="btn btn-default"> *@
+                <a href="@Url.Action("Edit", "Companies", new { id = item.CompanyId})" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                    <span class="sr-only">Modifica</span>
+                </a>
+                <a href="@Url.Action("Details", "Companies", new { id = item.CompanyId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
+                    <span class="sr-only">Dettagli</span>
+                </a>
+                <a href="@Url.Action("Delete", "Companies", new { id = item.CompanyId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                    <span class="sr-only">Elimina</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
 @if (Model.PageCount > 1)

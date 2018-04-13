@@ -86,31 +86,32 @@ namespace Ecommerce01.Controllers
                     {
                         db.Customers.Add(customer);
                         var response = DbHelper.SaveChanges(db);
-                        if (response.Succeeded)
+                        if (!response.Succeeded)
+                        {
+                            ModelState.AddModelError(string.Empty, response.Message);
+                            tran.Rollback();
+                        }
+                        else
                         {
                             UsersHelper.CreateUserAsp(customer.UserName, "Customer");
-
                             var user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
-
                             if (user == null)
                             {
                                 return RedirectToAction("Index", "Home");
                             }
+                            //new object
                             var companyCustomer = new CompanyCustomer()
                             {
                                 CompanyId = user.CompanyId,
                                 CustomerId = customer.CustomerId
                             };
+
                             db.CompanyCustomers.Add(companyCustomer);
                             db.SaveChanges();
                             tran.Commit();
                             return RedirectToAction("Index");
                         }
-                        else
-                        {
-                            ModelState.AddModelError(string.Empty, response.Message);
-                            tran.Rollback();
-                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -219,22 +220,25 @@ namespace Ecommerce01.Controllers
                 return RedirectToAction("Index", "Home");
             }
             var companyCustomer = db.CompanyCustomers
-               .SingleOrDefault(
-                    c => c.CompanyId == user.CompanyId && c.CustomerId == customer.CustomerId);
-
+               .SingleOrDefault(c => c.CompanyId == user.CompanyId && c.CustomerId == customer.CustomerId);
+             //where ?
             using (var transaction = db.Database.BeginTransaction(IsolationLevel.Serializable))
             {
                 try
                 {
+                    //remove one
                     db.CompanyCustomers.Remove(companyCustomer);
+                    //remove two
                     db.Customers.Remove(customer);
 
                     var response = DbHelper.SaveChanges(db);
+
                     if (response.Succeeded)
                     {
                         transaction.Commit();
                         return RedirectToAction("Index");
                     }
+                    //else
                     transaction.Rollback();
                     ModelState.AddModelError(string.Empty, response.Message);
                 }

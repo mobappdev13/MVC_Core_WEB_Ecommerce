@@ -1,0 +1,50 @@
+﻿@model Ecommerce01.Models.AttributeOptValue
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AttributeOptValue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AttributeOpt.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttributeOpt.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextAttribute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextAttribute)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueAttribute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueAttribute)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AttributeOptValueId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

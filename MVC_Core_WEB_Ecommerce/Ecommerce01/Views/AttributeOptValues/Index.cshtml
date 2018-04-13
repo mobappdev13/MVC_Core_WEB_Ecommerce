@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Ecommerce01.Models.AttributeOptValue>
+
+@{
+    ViewBag.Title = "Valori attributi";
+}
+
+<h2>Valori attributi</h2>
+@*<p>
+    @Html.ActionLink("Set Attributo", "Create")
+    @*<h1>questooooooooooooo @TempData["Count"].ToString()</h1>*@
+@*</p>*@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AttributeOpt.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company.Name)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TextAttribute)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ValueAttribute)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttributeOpt.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company.Name)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.TextAttribute)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValueAttribute)
+                </td>
+                <td>
+                    @*//@Html.ActionLink("Add", "Create", new { id = item.AttributeOptValueId })*@
+
+                    @*@Html.ActionLink(linkText: "Set Value",
+                        actionName: "Create",
+                        controllerName: "AttributeOptValues",
+                        routeValues: new
+                        {
+                            //id = item.AttributeOptId,
+                            id = item.AttributeOptValueId,
+                            desc = item.ValueAttribute
+                        },
+                        htmlAttributes: null)|*@
+                    <a href="@Url.Action("Edit", "AttributeOptValues", new { id = item.AttributeOptValueId  })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                        <span class="sr-only">Modifica</span>
+                    </a>
+                    @* @Html.ActionLink("Edit", "Edit", new { id = item.AttributeOptValueId }) |*@
+                    <a href="@Url.Action("Details", "AttributeOptValues", new { id = item.AttributeOptValueId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
+                        <span class="sr-only">Dettagli</span>
+                    </a>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.AttributeOptValueId }) |*@
+                    <a href="@Url.Action("Delete", "AttributeOptValues", new { id = item.AttributeOptValueId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                        <span class="sr-only">Elimina</span>
+                    </a>
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.AttributeOptValueId })*@
+                </td>
+                <td></td>
+            </tr>
+        }
+
+    </table>
+</div>
+@*<div>
+    @*//@Html.ActionLink("Set Attribute", "Create", "AttributeOptValues", new { id = item.AttributeOptId }, null)|*@
+    @*@Html.ActionLink("Back to Attributes Index", "Index", "AttributeOpts")
+</div>*@
+<a href="@Url.Action("Index", "AttributeOpts", new { })" class="btn btn-default btn-sm">
+    <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-6x text-info" title="Ritorna"></i>
+    <span class="sr-only">Ritorna lista Attributi</span>
+</a>

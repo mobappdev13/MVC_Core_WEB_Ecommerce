@@ -18,7 +18,7 @@
         <span class="sr-only">Crea Nuovo</span>
     </a>
 </p>
-<table class="table">
+<table class="table table-responsive table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
@@ -26,16 +26,16 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().FullName)
         </th>
-        
+
         @*<th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().DateBirth)
-        </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DateBirth)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Company.Name)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
-        </th>*@
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
         </th>
@@ -48,60 +48,60 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Departament.Name)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
         </th>
-        
+
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-       
-        @*<td>
-            @Html.DisplayFor(modelItem => item.DateBirth)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.Name)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Province.Name)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Departament.Name)
-        </td>
-        <td>
-            @if (!string.IsNullOrEmpty(item.Photo))
-                {
-                <img src="@Url.Content(item.Photo)" alt="Image" style="width:400px;height:400px;max-width: 100%; height: auto;" />
-            }
-        </td>
-    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
-            <td colspan="5">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DateBirth)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Departament.Name)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="@Url.Content(item.Photo)" alt="Image" style="width:400px;height:400px;max-width: 100%; height: auto;" />
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8">
                 @*@Html.ActionLink("Modifica", "Edit", new { id = item.UserId }, new { @class = "btn btn-info" })*@
                 @*  <a href="@Url.Action("Edit", "Users", new { id = item.XXXId })" class="btn btn-default"> *@
                 <a href="@Url.Action("Edit", "Users", new { id = item.UserId })" class="btn btn-default btn-sm">
@@ -118,7 +118,7 @@
                 </a>
             </td>
         </tr>
-}
+    }
 </table>
 @if (Model.PageCount > 1)
 {

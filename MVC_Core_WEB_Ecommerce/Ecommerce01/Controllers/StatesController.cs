@@ -16,7 +16,7 @@ namespace Ecommerce01.Controllers
     public class StatesController : Controller
     {
         private Ecommerce01Context db = new Ecommerce01Context();
-        private User user;
+        //private User user;
         private const int itemsonPage = 4;
 
         // GET: Users

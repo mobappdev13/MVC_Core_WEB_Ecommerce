@@ -42,10 +42,12 @@ namespace Ecommerce01.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var category = db.Categories.Find(id);
+
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 

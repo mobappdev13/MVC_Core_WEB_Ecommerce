@@ -1,115 +1,178 @@
 ﻿@model Ecommerce01.Models.Product
-
 @{
     ViewBag.Title = "Dettagli";
 }
 <h2>Dettagli</h2>
-<div>
-    <h4>Prodotto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <div class="row">
+    <div class="col-md-6">
+        <div>
+            <h4>Prodotto</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Image)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Image)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.Description)
+                </dd>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.Company.Name)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Company.Name)
+                    </dd>*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.BarCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BarCode)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tax.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Tax.Description)
+                </dd>
+                <hr />
+                <hr />
+                <dt>
+                    @Html.DisplayNameFor(model => model.VendorPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VendorPrice)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.VendorProductCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.VendorProductCode)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Description)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company.Name)
-        </dd>*@
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BarCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BarCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Tax.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tax.Description)
-        </dd>
-
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReorderPoint)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ReorderPoint)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Remarks)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Remarks)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>Inventory</h2>
         <hr />
+        @if (Model.Inventories.Count == 0)
+        {
+            <h2>ancora non sono state registrati inventari</h2>
+        }
+        else
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        Warehouse
+                    </th>
+                    <th>
+                        Stock
+                    </th>
+                </tr>
+                @foreach (var item in Model.Inventories.ToList())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Warehouse.Name)
+                        </td>
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Stock)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <strong>Total</strong>
+                    </td>
+                    <td align="right">
+                        <strong>@Html.DisplayFor(model => model.Stock)</strong>
+                    </td>
+                </tr>
+            </table>
+        }
+
+        @* vedi *@
+        <h4>Attributi del Prodotto</h4>
         <hr />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VendorPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VendorPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VendorProductCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VendorProductCode)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReorderPoint)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReorderPoint)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Remarks)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Remarks)
-        </dd>
-
-    </dl>
+        @if (Model.ProductAttributes.Count == 0)
+        {
+            <h2>nessuno attributo è stato configurato</h2>
+        }
+        else
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                       attributo
+                    </th>
+                    <th>
+                        valore
+                    </th>
+                </tr>
+                @foreach (var item in Model.ProductAttributes.ToList())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AttributeOpt.Description)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.AttributeOpt.ValueAttribute)
+                        </td>*@
+                    </tr>
+                }
+                <tr>
+                    @*<td>
+                        <strong>Total</strong>
+                    </td>
+                    <td align="right">
+                        <strong>@Html.DisplayFor(model => model.Stock)</strong>
+                    </td>*@
+                </tr>
+            </table>
+        }
+    </div>
 </div>
-<div>
-    @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
-    <a href="@Url.Action("Index", "Products", new { })" class="btn btn-default btn-sm">
-        <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
-        <span class="sr-only">Ritorna</span>
-    </a>
-    @*@Html.ActionLink("Modifica", "Edit", new { id = Model.XXXId }, new { @class = "btn btn-info" })*@
-
-    <a href="@Url.Action("Edit", "Products", new {id = Model.ProductId })" class="btn btn-default btn-sm">
-        <i aria-hidden="true" class="tn btn-default btn-sm far fa-edit fa-2x text-info" title="Modifica"></i>
-        Modifica
-        <span class="sr-only">Modifica</span>
-    </a>
-</div>
+            <div>
+                @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+                <a href="@Url.Action("Index", "Products", new { })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                    <span class="sr-only">Ritorna</span>
+                </a>
+                @*@Html.ActionLink("Modifica", "Edit", new { id = Model.XXXId }, new { @class = "btn btn-info" })*@
+                <a href="@Url.Action("Edit", "Products", new {id = Model.ProductId })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="tn btn-default btn-sm far fa-edit fa-2x text-info" title="Modifica"></i>
+                    Modifica
+                    <span class="sr-only">Modifica</span>
+                </a>
+            </div>

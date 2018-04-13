@@ -1,0 +1,56 @@
+﻿@model Ecommerce01.Models.AttributeOptValue
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AttributeOptValue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AttributeOpt.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttributeOpt.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextAttribute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextAttribute)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueAttribute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValueAttribute)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

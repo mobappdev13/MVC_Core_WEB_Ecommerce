@@ -44,6 +44,7 @@
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
+        @*attention    ProdAttrib*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.BarCode, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -101,33 +102,117 @@
                 @Html.ValidationMessageFor(model => model.ReorderPoint, "", new { @class = "text-danger" })
             </div>
         </div>
+        
+    @*<h4>Attributi del Prodotto</h4>
+    <hr />
+    @if (Model.ProductAttributes.Count == 0)
+    {
+        <h4>ancora non sono state registrati inventari</h4>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                   attributo
+                </th>
+                <th>
+                    valore
+                </th>
+            </tr>
+            @foreach (var item in Model.ProductAttributes.ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttributeOpt.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttributeOpt.ValueAttribute)
+                    </td>
+                </tr>
+            }
+            <tr>
+                @*<td>
+                    <strong>Total</strong>
+                </td>
+                <td align="right">
+                    <strong>@Html.DisplayFor(model => model.Stock)</strong>
+                </td>*@
+        @*</tr>*@
+            @*</table>*@
+@*}*@   
+        <div class="col-md-4">
+            <h4>ProductAttributes</h4>
+            <hr />
+            {QUESTO VALE @Model.ProductAttributes.Count}
+            @if (Model.ProductAttributes.Count == 0)
+            {
+                <h2 class="alert-danger">Non sarà possibile inserire gli attributi per questo prodotto</h2>
+            }
+            else
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            prodotto
+                        </th>
+                        <th>
+                            attributo
+                        </th>
+                        @*<th>
+                            valore ????????? pulsante
+                        </th>*@
+                    </tr>
+                    <tr>@Model.ProductAttributes.Count</tr>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                    @foreach (var item in Model.ProductAttributes.ToList())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelImodelItem => item.ProductId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model=> item.ProductAttributeId)
+                                @Html.DisplayFor(model => item.AttributeOpt.Description)
+                            </td>
+                            <td>
+                               eccommi2
+                                @*@Html.DisplayFor(model => item.AttributeOptId)
+                                @Html.DisplayFor(model => item.AttributeOpt.ValueAttribute)*@
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            }
             </div>
-        </div>
-        <div class="form-group">
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
-                    <a href="@Url.Action("Index", "Products", new { })" class="btn btn-default btn-sm">
-                        <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
-                        <span class="sr-only">Ritorna</span>
-                    </a>
-                    @*<input type="submit" value="Crea" class="btn btn-info" />*@
 
-                    <button class="btn btn-link btn-xs" type="submit" name="action" value="Crea">
-                        @*<i class="btn btn-default btn-xs far fa-save fa-3x"></i>*@
-                        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-2x text-info" title="Crea"></i>
-                        <span class="sr-only">Crea Nuovo</span>
-                    </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+                        <a href="@Url.Action("Index", "Products", new { })" class="btn btn-default btn-sm">
+                            <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                            <span class="sr-only">Ritorna</span>
+                        </a>
+                        @*<input type="submit" value="Crea" class="btn btn-info" />*@
+
+                        <button class="btn btn-link btn-xs" type="submit" name="action" value="Crea">
+                            @*<i class="btn btn-default btn-xs far fa-save fa-3x"></i>*@
+                            <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-2x text-info" title="Crea"></i>
+                            <span class="sr-only">Crea Nuovo</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 }
 
 @section Scripts {

@@ -17,10 +17,20 @@
         Crea Nuovo
         <span class="sr-only">Crea Nuovo</span>
     </a>
+    @*<a href="@Url.Action(
+            "SetAttribute",
+            "Products",
+            new { })" class="btn btn-default btn-xs">
+        <i aria-hidden="true" class="btn btn-default btn-xs fas fa-cogs fa-3x text-info" title="Imposta Attributi"></i>
+        Imposta Attributi
+        <span class="sr-only">Imposta Attributi</span>
+    </a>*@
 </p>
 <table class="table">
     <tr>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Image)
+        </th>
         @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Tax.Type)
         </th>*@
@@ -54,9 +64,7 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().VendorProductCode)
         </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Image)
-        </th>
+        
         @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Remarks)
         </th>*@
@@ -66,6 +74,12 @@
 @foreach (var item in Model)
 {
     <tr>
+        <td>
+            @if (!string.IsNullOrEmpty(item.Image))
+            {
+                <img src="@Url.Content(item.Image)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+            }
+        </td>
         @*<td>
                 @Html.DisplayFor(modelItem => item.Tax.Type)
             </td>*@
@@ -100,12 +114,7 @@
             @Html.DisplayFor(modelItem => item.VendorProductCode)
         </td>*@
 
-        <td>
-            @if (!string.IsNullOrEmpty(item.Image))
-            {
-                <img src="@Url.Content(item.Image)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
-            }
-        </td>
+        
         @*<td>
                 @Html.DisplayFor(modelItem => item.Remarks)
             </td>*@
@@ -121,6 +130,13 @@
                     <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" title="Dettagli"></i>
                     <span class="sr-only">Dettagli</span>
                 </a>
+                
+                @*<a href="@Url.Action("Details", "Products", new { id = item.ProductId })" class="btn btn-default btn-sm">*@
+                    <a href="@Url.Action("Index", "ProductAttributeStocks", new { id = item.ProductId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fas fa-cogs fa-2x text-info" title="Attributi Stock"></i>
+                        <span class="sr-only">Attributi Stock</span>
+                    </a>
+                
                 <a href="@Url.Action("Delete", "Products", new { id = item.ProductId })" class="btn btn-default btn-sm">
                     <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
                     <span class="sr-only">Elimina</span>

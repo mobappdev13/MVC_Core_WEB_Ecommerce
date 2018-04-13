@@ -36,7 +36,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBoxFor(model => model.DateCreated, new { @Value = Model.DateCreated.ToString("dd/MM/yyyy"), htmlAttributes = new { @class = "form-control" }})
                 @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -166,7 +167,7 @@
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+                    @Scripts.Render("~/bundles/jqueryval")
     @*@Scripts.Render("~/Scripts/script.js")*@
     @* per attivare solo le provincie da una determinanata regione/ le citta di determinata Provincia *@
     <script type="text/javascript">

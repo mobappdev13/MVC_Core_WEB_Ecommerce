@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Ecommerce01.Models.AttributeOpt>
+
+@{
+    ViewBag.Title = "Attributi";
+}
+
+<h2>Attributi</h2>
+
+@*<p>
+    @Html.ActionLink("Crea Nuovo", "Create")
+</p>*@
+
+<p class="text-success">
+    <a href="@Url.Action(
+            "Create",
+            "AttributeOpts",
+            new { })" class="btn btn-default btn-xs">
+        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-3x text-success" title="Crea Nuovo"></i>
+        Crea Nuovo
+        <span class="sr-only">Crea Nuovo</span>
+    </a>
+</p>
+<div class="text-info"><strong>@ViewData["Azienda"]</strong></div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Company.Name)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*@{TempData["Description"] = item.Description;}
+                    <td>Label @TempData["Description"]</td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Company.Name)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.AttributeOptId }) |*@
+                    <a href="@Url.Action("Edit", "AttributeOpts", new { id = item.AttributeOptId  })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-edit fa-2x text-info" title="Modifica"></i>
+                        <span class="sr-only">Modifica</span>
+                    </a>
+                    @*@Html.ActionLink("Details", "Details", new { id=item.AttributeOptId })|*@
+                    <a href="@Url.Action("Details", "AttributeOpts", new { id=item.AttributeOptId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Dettagli"></i>
+                        <span class="sr-only">Dettagli</span>
+                    </a>
+
+                    <a href="@Url.Action("Create", "AttributeOptValues", new
+                {
+                    id = item.AttributeOptId,
+                    desc = item.Description
+                },
+                null)" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="fas fa-cogs fa-2x text-success" title="Imposta Attributo"></i>
+                        <span class="sr-only">Imposta Attributo</span>
+                    </a>
+                    @*<i class="fas fa-cogs"></i>*@
+
+                    @*@Html.ActionLink(linkText: "Imposta Attributo",
+                            actionName:"Create",
+                            controllerName: "AttributeOptValues",
+                            routeValues: new
+                            {
+                                id = item.AttributeOptId,
+                                desc = item.Description
+                            },
+                            htmlAttributes: null)
+                        <i aria-hidden="true" class="far fa-list-alt fa-2x text-warning" style="color:#e06b19" title="Imposta"></i>
+                        <span class="sr-only">Imposta</span>*@
+
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.AttributeOptId })*@
+                    <a href="@Url.Action("Delete", "AttributeOpts", new { id = item.AttributeOptId })" class="btn btn-default btn-sm">
+                        <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+                        <span class="sr-only">Elimina</span>
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </table>
+ </div>
+

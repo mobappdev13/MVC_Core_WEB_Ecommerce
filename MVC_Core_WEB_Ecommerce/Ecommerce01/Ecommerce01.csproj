@@ -273,6 +273,8 @@
     <Compile Include="Classes\MailHelper.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttributeOptsController.cs" />
+    <Compile Include="Controllers\AttributeOptValuesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
@@ -281,12 +283,13 @@
     <Compile Include="Controllers\GenericoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductAttributeStocksController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\SupplierClassesController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
-    <Compile Include="Controllers\SuppliersControllerOLD.cs" />
     <Compile Include="Controllers\TaxesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WarehousesController.cs" />
@@ -305,8 +308,62 @@
     <Compile Include="Migrations\201804031930475_Suppliers2.Designer.cs">
       <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804051637574_Duplicatedpermitted.cs" />
+    <Compile Include="Migrations\201804051637574_Duplicatedpermitted.Designer.cs">
+      <DependentUpon>201804051637574_Duplicatedpermitted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804052118099_NewInventory.cs" />
+    <Compile Include="Migrations\201804052118099_NewInventory.Designer.cs">
+      <DependentUpon>201804052118099_NewInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061127559_inventoriesnotNull.cs" />
+    <Compile Include="Migrations\201804061127559_inventoriesnotNull.Designer.cs">
+      <DependentUpon>201804061127559_inventoriesnotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061359520_newProdInventories.cs" />
+    <Compile Include="Migrations\201804061359520_newProdInventories.Designer.cs">
+      <DependentUpon>201804061359520_newProdInventories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804081633304_addOrderAttributes.cs" />
+    <Compile Include="Migrations\201804081633304_addOrderAttributes.Designer.cs">
+      <DependentUpon>201804081633304_addOrderAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804081924247_addAttributesNew.cs" />
+    <Compile Include="Migrations\201804081924247_addAttributesNew.Designer.cs">
+      <DependentUpon>201804081924247_addAttributesNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804091152462_changeValueAttribute.cs" />
+    <Compile Include="Migrations\201804091152462_changeValueAttribute.Designer.cs">
+      <DependentUpon>201804091152462_changeValueAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101304160_ProductAttributeStock.cs" />
+    <Compile Include="Migrations\201804101304160_ProductAttributeStock.Designer.cs">
+      <DependentUpon>201804101304160_ProductAttributeStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804101520060_NewTables.cs" />
+    <Compile Include="Migrations\201804101520060_NewTables.Designer.cs">
+      <DependentUpon>201804101520060_NewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804110851196_AttributeValues.cs" />
+    <Compile Include="Migrations\201804110851196_AttributeValues.Designer.cs">
+      <DependentUpon>201804110851196_AttributeValues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121003493_isUniqueValueAtt.cs" />
+    <Compile Include="Migrations\201804121003493_isUniqueValueAtt.Designer.cs">
+      <DependentUpon>201804121003493_isUniqueValueAtt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121248553_AttribValNOnUnique.cs" />
+    <Compile Include="Migrations\201804121248553_AttribValNOnUnique.Designer.cs">
+      <DependentUpon>201804121248553_AttribValNOnUnique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121319568_AddIndixes.cs" />
+    <Compile Include="Migrations\201804121319568_AddIndixes.Designer.cs">
+      <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttributeOpt.cs" />
+    <Compile Include="Models\AttributeOptValue.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
@@ -318,7 +375,13 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderDetailTmp.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductAttribute.cs" />
+    <Compile Include="Models\ProductAttributeStock.cs" />
+    <Compile Include="Models\ProductInventoryViewModel.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\State.cs" />
@@ -365,8 +428,6 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
-    <Content Include="Ecommerce01ApiDependencyInjection.csproj.user" />
-    <Content Include="Ecommerce01DataAccess.csproj" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -455,7 +516,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\0script.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -541,11 +602,6 @@
     <Content Include="Views\Taxes\Details.cshtml" />
     <Content Include="Views\Taxes\Edit.cshtml" />
     <Content Include="Views\Taxes\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -561,11 +617,6 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
-    <Content Include="Views\SuppliersOLD\Create.cshtml" />
-    <Content Include="Views\SuppliersOLD\Delete.cshtml" />
-    <Content Include="Views\SuppliersOLD\Details.cshtml" />
-    <Content Include="Views\SuppliersOLD\Edit.cshtml" />
-    <Content Include="Views\SuppliersOLD\Index.cshtml" />
     <Content Include="Views\Suppliers\Create.cshtml" />
     <Content Include="Views\Suppliers\Delete.cshtml" />
     <Content Include="Views\Suppliers\Details.cshtml" />
@@ -576,6 +627,39 @@
     <Content Include="Views\SupplierClasses\Details.cshtml" />
     <Content Include="Views\SupplierClasses\Edit.cshtml" />
     <Content Include="Views\SupplierClasses\Index.cshtml" />
+    <Content Include="Views\Attributes\Create.cshtml" />
+    <Content Include="Views\Attributes\Delete.cshtml" />
+    <Content Include="Views\Attributes\Details.cshtml" />
+    <Content Include="Views\Attributes\Edit.cshtml" />
+    <Content Include="Views\Attributes\Index.cshtml" />
+    <Content Include="Views\AttributeOpts\Create.cshtml" />
+    <Content Include="Views\AttributeOpts\Delete.cshtml" />
+    <Content Include="Views\AttributeOpts\Details.cshtml" />
+    <Content Include="Views\AttributeOpts\Edit.cshtml" />
+    <Content Include="Views\AttributeOpts\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\SetAttribute.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\Create.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\Delete.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\Details.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\Edit.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\Index.cshtml" />
+    <Content Include="Views\ProductAttributeStocks\AddAttributeStocks.cshtml" />
+    <Content Include="Views\AttributeOpts\SetAttribute.cshtml" />
+    <Content Include="Views\AttributeOptValues\Create.cshtml" />
+    <Content Include="Views\AttributeOptValues\Delete.cshtml" />
+    <Content Include="Views\AttributeOptValues\Details.cshtml" />
+    <Content Include="Views\AttributeOptValues\Edit.cshtml" />
+    <Content Include="Views\AttributeOptValues\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -608,6 +692,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031930475_Suppliers2.resx">
       <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051637574_Duplicatedpermitted.resx">
+      <DependentUpon>201804051637574_Duplicatedpermitted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804052118099_NewInventory.resx">
+      <DependentUpon>201804052118099_NewInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061127559_inventoriesnotNull.resx">
+      <DependentUpon>201804061127559_inventoriesnotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061359520_newProdInventories.resx">
+      <DependentUpon>201804061359520_newProdInventories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804081633304_addOrderAttributes.resx">
+      <DependentUpon>201804081633304_addOrderAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804081924247_addAttributesNew.resx">
+      <DependentUpon>201804081924247_addAttributesNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804091152462_changeValueAttribute.resx">
+      <DependentUpon>201804091152462_changeValueAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101304160_ProductAttributeStock.resx">
+      <DependentUpon>201804101304160_ProductAttributeStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804101520060_NewTables.resx">
+      <DependentUpon>201804101520060_NewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804110851196_AttributeValues.resx">
+      <DependentUpon>201804110851196_AttributeValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121003493_isUniqueValueAtt.resx">
+      <DependentUpon>201804121003493_isUniqueValueAtt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121248553_AttribValNOnUnique.resx">
+      <DependentUpon>201804121248553_AttribValNOnUnique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121319568_AddIndixes.resx">
+      <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

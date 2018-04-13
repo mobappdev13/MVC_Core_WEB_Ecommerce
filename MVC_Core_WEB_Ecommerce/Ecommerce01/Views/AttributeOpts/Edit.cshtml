@@ -1,0 +1,71 @@
+﻿@model Ecommerce01.Models.AttributeOpt
+
+@{
+    ViewBag.Title = "Modifica";
+}
+
+<h2>Modifica</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Attributo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AttributeOptId)
+        @Html.HiddenFor(model => model.CompanyId)
+        <div class="text-info"><strong>@ViewData["Azienda"]</strong></div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CompanyId, "CompanyId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CompanyId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ValueAttribute, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValueAttribute, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ValueAttribute, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+                <a href="@Url.Action("Index", "AttributeOpts", new { })" class="btn btn-default btn-sm">
+                    <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                    <span class="sr-only">Ritorna</span>
+                </a>
+                <button class="btn btn-link btn-xs " type="submit" name="action" value="Salva">
+                    <i aria-hidden="true" class="btn btn-default btn-xs far fa-save fa-2x text-info" title="Salva"></i>
+
+                    <span class="sr-only">Salva</span>
+                </button>
+                @*<button class="btn btn-link btn-xs" type="submit" name="action" value="Salva">
+                    <i class="btn btn-default btn-xs far fa-save fa-3x"></i>
+                </button>*@
+            </div>
+        </div>
+        
+    </div>
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

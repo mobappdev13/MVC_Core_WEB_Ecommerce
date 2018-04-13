@@ -75,11 +75,14 @@
                                 Store-Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @Html.ActionLink("Attributi", "Index", "AttributeOpts", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Valori Attributi", "Index", "AttributeOptValues", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Categorie", "Index", "Categories", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Clienti", "Index", "Customers", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Fornitori", "Index", "Suppliers", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Magazzini", "Index", "Warehouses", new { area = "" }, new { @class = "dropdown-item" })
                                 @Html.ActionLink("Prodotti", "Index", "Products", new { area = "" }, new { @class = "dropdown-item" })
+                                @*@Html.ActionLink("ProdottiSHORT", "Index", "ProductShorts", new { area = "" }, new { @class = "dropdown-item" })*@
                                 @Html.ActionLink("Tasse-Sconti", "Index", "Taxes", new { area = "" }, new { @class = "dropdown-item" })
                             </div>
                             @*<a class="dropdown-item" href="#">Action</a>*@

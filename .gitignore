@@ -274,3 +274,4 @@ paket-files/
 __pycache__/
 *.pyc
 /MVC_Core_WEB_Ecommerce/Ecommerce01/Ecommerce01ApiDependencyInjection/fonts
+/CordovaApps

@@ -284,7 +284,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\ProductAttributeStocksController.cs" />
+    <Compile Include="Migrations\201804171329534_stockProdAttribA.cs" />
+    <Compile Include="Migrations\201804171329534_stockProdAttribA.Designer.cs">
+      <DependentUpon>201804171329534_stockProdAttribA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804171345275_stockProdAttribB.cs" />
+    <Compile Include="Migrations\201804171345275_stockProdAttribB.Designer.cs">
+      <DependentUpon>201804171345275_stockProdAttribB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
@@ -360,6 +367,10 @@
     <Compile Include="Migrations\201804121319568_AddIndixes.Designer.cs">
       <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804180757076_severalChanges.cs" />
+    <Compile Include="Migrations\201804180757076_severalChanges.Designer.cs">
+      <DependentUpon>201804180757076_severalChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttributeOpt.cs" />
@@ -379,9 +390,8 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderDetailTmp.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductAttribute.cs" />
-    <Compile Include="Models\ProductAttributeStock.cs" />
     <Compile Include="Models\ProductInventoryViewModel.cs" />
+    <Compile Include="Models\ProductStockByAttrib.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\State.cs" />
@@ -648,12 +658,6 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\SetAttribute.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\Create.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\Delete.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\Details.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\Edit.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\Index.cshtml" />
-    <Content Include="Views\ProductAttributeStocks\AddAttributeStocks.cshtml" />
     <Content Include="Views\AttributeOpts\SetAttribute.cshtml" />
     <Content Include="Views\AttributeOptValues\Create.cshtml" />
     <Content Include="Views\AttributeOptValues\Delete.cshtml" />
@@ -731,6 +735,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121319568_AddIndixes.resx">
       <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171329534_stockProdAttribA.resx">
+      <DependentUpon>201804171329534_stockProdAttribA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171345275_stockProdAttribB.resx">
+      <DependentUpon>201804171345275_stockProdAttribB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804180757076_severalChanges.resx">
+      <DependentUpon>201804180757076_severalChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

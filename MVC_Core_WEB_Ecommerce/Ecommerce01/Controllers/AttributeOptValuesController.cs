@@ -27,7 +27,10 @@ namespace Ecommerce01.Controllers
                 .Include(a => a.Company)
                 .Where(a => a.CompanyId == user.CompanyId);
           
-            return View(attributeOptValues.ToList());
+            return View(attributeOptValues
+                .OrderBy(a => a.AttributeOptId)
+                .ThenBy (a => a.ValueAttribute)
+                .ToList());
         }
 
         // GET: AttributeOptValues/Details/5
@@ -146,17 +149,24 @@ namespace Ecommerce01.Controllers
         public ActionResult Edit(int? id)
         {
             user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             AttributeOptValue attributeOptValue = db.AttributeOptValues.Find(id);
+
             if (attributeOptValue == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AttributeOptId = new SelectList(db.AttributeOpts, "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
-            ViewBag.CompanyId = new SelectList(db.Companies, "CompanyId", "Name", attributeOptValue.CompanyId);
+            //
+            ViewBag.AttributeOptId = new SelectList(db.AttributeOpts.Where(ao => ao.AttributeOptId == attributeOptValue.AttributeOptId), "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
+            ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.CompanyId == user.CompanyId), "CompanyId", "Name", attributeOptValue.CompanyId);
+            //return View(attributeOptValue); rimane in questa pagina no scrive record saved
+            //return View();
+            //
             return View(attributeOptValue);
         }
 
@@ -174,8 +184,8 @@ namespace Ecommerce01.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AttributeOptId = new SelectList(db.AttributeOpts, "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
-            ViewBag.CompanyId = new SelectList(db.Companies, "CompanyId", "Name", attributeOptValue.CompanyId);
+            ViewBag.AttributeOptId = new SelectList(db.AttributeOpts.Where(ao => ao.AttributeOptId == attributeOptValue.AttributeOptId), "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
+            ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.CompanyId == user.CompanyId), "CompanyId", "Name", attributeOptValue.CompanyId);
             return View(attributeOptValue);
         }
 

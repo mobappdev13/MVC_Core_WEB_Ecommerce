@@ -1,14 +1,14 @@
 ﻿@model Ecommerce01.Models.AttributeOptValue
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Elimina";
 }
 
-<h2>Delete</h2>
+<h2>Elimina</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="text-danger">E' sicuro di volere eliminare questo registro ?</h3>
 <div>
-    <h4>AttributeOptValue</h4>
+    <h4>Valore del Attributo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,12 +45,21 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+            @*@Html.ActionLink("Ritorna", "Index", new { }, new { @class = "btn-outline-primary" })*@
+            <a href="@Url.Action("Index", "AttributeOptValues", new { })" class="btn btn-default btn-sm">
+                <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-2x text-info" title="Ritorna"></i>
+                <span class="sr-only">Ritorna</span>
+            </a>
+            @*<input type="submit" value="Elimina" class="btn btn-danger" />*@
+            <button class="btn btn-link btn-sm" type="submit" name="action" value="Elimina">
+                <i aria-hidden="true" class="far fa-trash-alt fa-2x text-danger" title="Elimina"></i>
+            </button>
         </div>
     }
 </div>

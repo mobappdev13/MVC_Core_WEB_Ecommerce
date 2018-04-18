@@ -125,7 +125,8 @@
         @* vedi *@
         <h4>Attributi del Prodotto</h4>
         <hr />
-        @if (Model.ProductAttributes.Count == 0)
+        @*@if (Model.ProductAttributes.Count == 0)*@
+        @if (Model.ProductStockByAttribs.Count == 0)
         {
             <h2>nessuno attributo è stato configurato</h2>
         }
@@ -140,15 +141,16 @@
                         valore
                     </th>
                 </tr>
-                @foreach (var item in Model.ProductAttributes.ToList())
+                @*@foreach (var item in Model.ProductAttributes.ToList())*@
+                @foreach (var item in Model.ProductStockByAttribs.ToList())
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.AttributeOpt.Description)
+                            @Html.DisplayFor(model => item.AttributeOptId)
                         </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.AttributeOpt.ValueAttribute)
-                        </td>*@
+                        <td>
+                            @Html.DisplayFor(model => item.ProductAttributeValue)
+                        </td>
                     </tr>
                 }
                 <tr>

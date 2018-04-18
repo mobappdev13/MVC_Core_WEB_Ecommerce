@@ -47,7 +47,9 @@ namespace Ecommerce01.Controllers
             //}
             //ViewData["Azienda"] = "QUESTA Azienda";
 
-            return View(attributeOpts.ToList());
+            return View(attributeOpts
+                .OrderBy(a => a.Description)
+                .ToList());
         }
 
         // GET: AttributeOpts/Details/5

@@ -19,8 +19,14 @@ namespace Ecommerce01.Controllers
 
         private List<Product> Product_List = new List<Product>();
         private List<Inventory> Inventory_List = new List<Inventory>();
-        private List<ProductAttribute> ProductAttribute_List = new List<ProductAttribute>();
+        //last remove
+        // private List<ProductAttribute> ProductAttribute_List = new List<ProductAttribute>();
+
         //private List<AttributeOpt> AttributeOpt_List = new List<AttributeOpt>();
+
+        //last add
+        //private List<ProductAttributeStock> ProductAttributeStocks_List = new List<ProductAttributeStock>();
+        private List<ProductStockByAttrib> ProductStockByAttribs_List = new List<ProductStockByAttrib>();
 
         private const int itemsonPage = 3;
         // GET: Products
@@ -97,12 +103,22 @@ namespace Ecommerce01.Controllers
                 .Where(i => i.ProductId == product.ProductId)
                 .OrderBy(i => i.ProductId).ToList();
 
-            ProductAttribute_List = db.ProductAttributes
+            ////last remove
+            //ProductAttribute_List = db.ProductAttributes
+            //   .Include(pa => pa.Product)
+            //   .Include(pa => pa.AttributeOpt)
+            //   .Where(pa => pa.Product.CompanyId == user.CompanyId)
+            //   .Where(pa => pa.ProductId == product.ProductId)
+            //   .OrderBy(pa => pa.ProductId).ToList();
+
+            //last Add
+            ProductStockByAttribs_List = db.ProductStockByAttribs
                .Include(pa => pa.Product)
-               .Include(pa => pa.AttributeOpt)
                .Where(pa => pa.Product.CompanyId == user.CompanyId)
                .Where(pa => pa.ProductId == product.ProductId)
-               .OrderBy(pa => pa.ProductId).ToList();
+               .OrderBy(pa => pa.ProductId)
+               .ThenBy(pa => pa.AttributeOptId)
+               .ToList();
 
 
 
@@ -110,7 +126,11 @@ namespace Ecommerce01.Controllers
             product.Category = db.Categories.FirstOrDefault(c => c.CategoryId == product.CategoryId);
             product.Tax = db.Taxes.FirstOrDefault(t => t.TaxId == product.TaxId);
             product.Inventories = Inventory_List;
-            product.ProductAttributes = ProductAttribute_List;
+            //last add
+            //product.ProductAttributeStocks = ProductAttributeStocks_List;
+
+            //last remove
+            product.ProductStockByAttribs = ProductStockByAttribs_List;
             return View(product);
         }
 
@@ -181,13 +201,24 @@ namespace Ecommerce01.Controllers
             //    attributes.Add(item.Description);
             //}
 
-            ProductAttribute_List = db.ProductAttributes
-                .Where(pa => pa.Product.CompanyId == user.CompanyId)
-                .Include(pa => pa.AttributeOpt)
-                .ToList();
+            //last Add
+            ProductStockByAttribs_List = db.ProductStockByAttribs
+              .Include(pa => pa.Product)
+              .Where(pa => pa.Product.CompanyId == user.CompanyId)
+              .Where(pa => pa.ProductId == product.ProductId)
+              .OrderBy(pa => pa.ProductId)
+              .ThenBy(pa => pa.AttributeOptId)
+              .ToList();
 
+            //last remove
+            //ProductAttribute_List = db.ProductAttributes
+            //    .Where(pa => pa.Product.CompanyId == user.CompanyId)
+            //    .Include(pa => pa.AttributeOpt)
+            //    .ToList();
 
-            product.ProductAttributes = ProductAttribute_List;
+            product.ProductStockByAttribs = ProductStockByAttribs_List;
+            //last remove
+            //product.ProductAttributes = ProductAttribute_List;
             //ViewBag.ProdAttrib = new SelectList(DropDownHelper.GetAttributes(user.CompanyId), "Attibuto", "Description");
             return View(product);
         }

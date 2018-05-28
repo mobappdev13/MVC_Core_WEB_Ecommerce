@@ -15,6 +15,8 @@ namespace Ecommerce01.Controllers
     {
         private Ecommerce01Context db = new Ecommerce01Context();
         private User user;
+        private bool IsColor = false;
+        private bool IsSize = false;
 
         // GET: AttributeOptValues
         //int? attributeOptId
@@ -53,6 +55,7 @@ namespace Ecommerce01.Controllers
         //
         public ActionResult Create(int? a, string desc)
         {
+            AttributeOptValue attributeOptValue = new AttributeOptValue();
             //var mia = desc;
             if (String.IsNullOrEmpty(desc))
             {
@@ -61,11 +64,27 @@ namespace Ecommerce01.Controllers
             //AttributeOptId
 
             var attributeOPT = db.AttributeOpts.FirstOrDefault(ao =>ao.Description == desc);
+
+            if (desc.Trim() == "Colore")
+            {
+                IsColor = true;
+            }
+            else if (desc.Trim() == "Taglia")
+            {
+                IsSize = true;
+            }
+            else
+            {
+                IsColor = false;
+                IsSize = false;
+            }
+               
             user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             var company = user.CompanyId;
 
-           // TextAttribute = "TEST",
-            var attributeOptValue = new AttributeOptValue {
+            // TextAttribute = "TEST",
+            //var attributeOptValue
+             attributeOptValue = new AttributeOptValue {
                 AttributeOptId = attributeOPT.AttributeOptId,
                 TextAttribute = attributeOPT.Description, //"TEST",
                 CompanyId = user.CompanyId
@@ -74,6 +93,22 @@ namespace Ecommerce01.Controllers
             
             ViewBag.AttributeOptId = new SelectList(db.AttributeOpts.Where(ao => ao.AttributeOptId == attributeOptValue.AttributeOptId), "AttributeOptId", "Description");
             ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.CompanyId == user.CompanyId), "CompanyId", "Name");
+            
+            //last add
+            if (IsColor)
+            {
+                ViewBag.ValueAttribute = new SelectList(db.Colors, "ColorId", "Description");
+                ViewBag.VBList = new SelectList(db.SizeDims, "Description", "Description");
+            }
+            if (IsSize)
+            {
+                ViewBag.ValueAttribute = new SelectList(db.SizeDims, "Description", "Description");
+                ViewBag.VBList = new SelectList(db.Colors, "Description", "Description");
+            }
+            //to do
+            //attributeOptValue.ColorList = new SelectList(db.Colors, "ColorId", "Description");
+           
+            //ViewBag.ValueAttribute = new SelectList(db.Colors, "Description", "Description");
             return View(attributeOptValue);
         }
 
@@ -82,7 +117,7 @@ namespace Ecommerce01.Controllers
         // Per ulteriori dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AttributeOptValueId,CompanyId,AttributeOptId,TextAttribute,ValueAttribute")] AttributeOptValue attributeOptValue, int? a, string desc)
+        public ActionResult Create([Bind(Include = "AttributeOptValueId,CompanyId,AttributeOptId,TextAttribute,ValueAttribute")] AttributeOptValue attributeOptValue, int? a, string desc, IEnumerable<string> ColorList)
         {
             user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             //var attributeOPT = db.AttributeOpts.FirstOrDefault(ao => ao.Description == desc);
@@ -139,7 +174,40 @@ namespace Ecommerce01.Controllers
 
             ViewBag.AttributeOptId = new SelectList(db.AttributeOpts.Where(ao => ao.AttributeOptId == attributeOptValue.AttributeOptId), "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
             ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.CompanyId == user.CompanyId), "CompanyId", "Name", attributeOptValue.CompanyId);
+
+            //
+            if (desc.Trim() == "Colore")
+            {
+                IsColor = true;
+            }
+            else if (desc.Trim() == "Taglia")
+            {
+                IsSize = true;
+            }
+            else
+            {
+                IsColor = false;
+                IsSize = false;
+            }
+            //
+            
+            //last add
+
+            if (IsColor)
+            {
+                ViewBag.ValueAttribute = new SelectList(db.Colors, "ColorId", "Description", attributeOptValue.ValueAttribute);
+                ViewBag.VBList = new SelectList(db.SizeDims, "Description", "Description", attributeOptValue.SizeList);
+            }
+            if (IsSize)
+            {
+                ViewBag.ValueAttribute = new SelectList(db.SizeDims, "Description", "Description", attributeOptValue.ValueAttribute);
+                ViewBag.VBList = new SelectList(db.Colors, "Description", "Description", attributeOptValue.ColorList);
+            }
+            //to do
+            //ViewBag.ValueAttribute = new SelectList(db.Colors, "Description", "Description", attributeOptValue.TextAttribute);
             //return View(attributeOptValue); rimane in questa pagina no scrive record saved
+            //attributeOptValue.ColorList = new SelectList(db.Colors, "ColorId", "Description", attributeOptValue.ColorList);
+            //ViewBag.VBColorList = new SelectList(db.Colors, "ColorId", "Description", attributeOptValue.ColorList);
             return View();
             //return RedirectToAction("Index"); ok
 
@@ -164,6 +232,8 @@ namespace Ecommerce01.Controllers
             //
             ViewBag.AttributeOptId = new SelectList(db.AttributeOpts.Where(ao => ao.AttributeOptId == attributeOptValue.AttributeOptId), "AttributeOptId", "Description", attributeOptValue.AttributeOptId);
             ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.CompanyId == user.CompanyId), "CompanyId", "Name", attributeOptValue.CompanyId);
+            //last add
+            ViewBag.ValueAttribute = new SelectList(db.Colors, "ColorId", "Description", attributeOptValue.ValueAttribute);
             //return View(attributeOptValue); rimane in questa pagina no scrive record saved
             //return View();
             //

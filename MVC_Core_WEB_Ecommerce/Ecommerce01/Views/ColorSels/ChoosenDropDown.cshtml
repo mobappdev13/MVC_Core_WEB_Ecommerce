@@ -1,0 +1,27 @@
+﻿@model Ecommerce01.Models.ColorSel
+@{
+    ViewBag.Title = "ChoosenDropDown";
+}
+
+<h2>ChoosenDropDown</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(m => m.ColorId,
+    Model.GetColorSelList
+    .Select(c => new SelectListItem
+    {
+        Text = c.Description,
+        Value = c.ColorId.ToString()
+    }
+    ),
+    new { @class = "form-control chosen-select" })
+
+    <input type="submit" value="Save" class="btn btn-default" />
+
+}
+
+<script>
+    $('.chosen-select').chosen();
+</script>
+

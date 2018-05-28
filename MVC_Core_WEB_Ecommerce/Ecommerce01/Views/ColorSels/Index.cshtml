@@ -1,0 +1,48 @@
+﻿@model Ecommerce01.Models.ColorSel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @*@Html.Label("1. Single select")<br />
+    @Html.DropDownList("countrylist", null, "select single country", new { style = "width:200px;" })<br /><br />*@
+
+    @*@Html.Label("2.Choosen Multiple select")<br />
+    @Html.ListBox("multiselectcountries", ViewBag.MultiselectCountry as MultiSelectList, new { style = "width:200px;" })<br /><br />*@
+
+    @Html.Label("3. Single select from db")<br />
+    @Html.DropDownList("coloredropdown1", Model.ColorList)<br /><br />
+
+    @Html.Label("4. Single select color from db")<br />
+    @Html.DropDownList("coloredropdown2", ViewBag.VBColorList as SelectList)<br /><br />
+
+    @Html.Label("5. Choosen Multiple select colors from db")<br />
+    @Html.ListBox("multiselectcolors", ViewBag.VBMultiColor as MultiSelectList)<br /><br />
+
+    @Html.Label("6. Choosen Multiple select sizes from db")<br />
+    @Html.ListBox("multiselectsizes1", ViewBag.VBMultiSizes as MultiSelectList)<br /><br />
+
+
+    @Html.Label("7. Choosen Multiple select COLORS from db WITH MODEL")<br />
+    @Html.ListBox("multiselectsizes2", Model.MultiSelecColorList)<br /><br />
+
+    @Html.Label("8. Choosen Multiple select COLORS from db -ListBoxFor")<br />
+    @Html.ListBoxFor(x => x.MultiSelecColorList, Model.MultiSelecColorList)<br />
+
+    <input type="submit" name="name" value="Submit" />
+
+    <br />
+
+    @*<br /><br /><br /><br />
+
+    foreach (var size in ViewBag.VBMultiSizes)
+    {
+        <div class="text-success">@ViewData["size"]</div>
+    }*@
+    
+
+}
+

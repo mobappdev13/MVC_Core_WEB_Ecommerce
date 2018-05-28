@@ -1,0 +1,90 @@
+﻿@model Ecommerce01.Models.ProductStockByAttrib
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductStockByAttrib</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AttributeOpt.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttributeOpt.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductAttributeValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductAttributeValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverriddenPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverriddenPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReorderPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReorderPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkuEAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkuEAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDisponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDisponible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductStockByAttribId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

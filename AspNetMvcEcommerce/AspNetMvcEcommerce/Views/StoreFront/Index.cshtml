@@ -1,0 +1,124 @@
+﻿@model AspNetMvcEcommerce.Models.Category
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+
+<br/>
+<br/>
+
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            @if(Model.Name=="Dairy")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/1">DAIRY</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                     <a href="~/StoreFront/Index/1">DAIRY</a>
+                </li>
+            }
+            @if (Model.Name == "Meats")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/2">MEATS</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/2">MEATS</a>
+                </li>
+            }
+            @if (Model.Name == "Bakery")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/3">BAKERY</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/3">BAKERY</a>
+                </li>
+            }
+            @if (Model.Name == "Fruits")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/4">FRUIT &amp; VEG</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/4">FRUIT &amp; VEG</a>
+                </li>
+            }
+            
+        </ul>
+    </div>
+    <div class="col-xs-12 col-md-9">
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-xs-12 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="~/Content/Images/Products/@(product.Name).png">
+                        <div class="caption text-center">
+                            <p>
+                                <b>Name:</b> <span>@product.Name</span>
+                            </p>
+                            <p>
+                                <b>Price:</b> <span>@product.Price USD</span>
+                            </p>
+                            <br />
+                        
+                            @* vediamo *@
+                           
+                                    @*<h2>Simple Quantity increment buttons with Javascript </h2>*@
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+                                                    <span class="glyphicon glyphicon-minus"></span>
+                                                </button>
+                                            </span>
+                                            @*<input name="somename"
+                                                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                   type="number"
+                                                   maxlength="6" />*@
+                                            @*<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">*@
+                                            <input type="text" pattern="\d*" maxlength="4" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">>
+                                            
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    
+                            </div>
+                            @* fine *@
+                            <div class="text-center">
+                                @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = product.Id }, new {@class="btn btn-info"})
+                            </div>
+                                                     
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        var Url = '@Url.Action("GetCities", "Generic")';
+    </script>
+}*@

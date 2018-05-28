@@ -24,61 +24,78 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AttributeOptId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AttributeOptId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AttributeOptId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+           
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>@Html.LabelFor(model => model.AttributeOptId, htmlAttributes: new { @class = "control-label col-md-2" })</th>
+                            <th>@Html.LabelFor(model => model.ValueAttribute, htmlAttributes: new { @class = "control-label col-md-2" })</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>@Html.DropDownList("AttributeOptId", null, htmlAttributes: new { @class = "form-control" })</th> 
+                                @Html.ValidationMessageFor(model => model.AttributeOptId, "", new { @class = "text-danger" })
+        
+                            <th>@Html.DropDownList("ValueAttribute", null, htmlAttributes: new { @class = "form -control" })</th>
+                                @Html.ValidationMessageFor(model => model.ValueAttribute, "", new { @class = "text-danger" })
+        
+                             <th><button>action button</button></th>
+                        </tr>
+                </table>
+</div>
+           
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.ValueAttribute, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ValueAttribute", null,  htmlAttributes:  new { @class = "form -control" })
+                        @Html.ValidationMessageFor(model => model.ValueAttribute, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.TextAttribute, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TextAttribute, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TextAttribute, "", new { @class = "text-danger" })
+
+
+                @*@Html.DropDownList("Colordropdown1", Model.ColorList)*@
+                @*@Html.DropDownList("Colordropdown1", ViewBag.VBColorList as SelectList)<br /><br />*@
+                @*@Html.DropDownListFor(x => x.ColorList, new SelectList(Model.ColorList, "Value", "Text"))*@
+
+
+
+
+                <div class="form-group">
+
+                    <button class="btn btn-link btn-xs" type="submit" name="action" value="Create">
+                        @*<i class="btn btn-default btn-xs far fa-save fa-3x"></i>*@
+                        <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-2x text-info" title="Crea"></i>
+                        <span class="sr-only">Crea Nuovo</span>
+                    </button>
+                    <div class="alert-info">@TempData["Message"]</div>
                 </div>
-            </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ValueAttribute, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ValueAttribute, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ValueAttribute, "", new { @class = "text-danger" })
             </div>
-        </div>
-        <div class="form-group">
-
-            <button class="btn btn-link btn-xs" type="submit" name="action" value="Create">
-                @*<i class="btn btn-default btn-xs far fa-save fa-3x"></i>*@
-                <i aria-hidden="true" class="btn btn-default btn-xs far fa-plus-square fa-2x text-info" title="Crea"></i>
-                <span class="sr-only">Crea Nuovo</span>
-            </button>
-            <div class="alert-info">@TempData["Message"]</div>
-        </div>
-    </div>
 }
-    
+
     <div class="form-group">
 
-    @*@Html.ActionLink("BACK TO Attributes Index", "Index", "AttributeOpts")*@
-    <a href="@Url.Action("Index", "AttributeOptValues", new { })" class="btn btn-default btn-sm">
-        @*<i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-6x text-info" title="Ritorna"></i>*@
-        <i aria-hidden="true" class="btn btn-default btn-sm fas far fa-list-alt" text-info" title="Guarda Lista Valori"></i>
-        <span class="sr-only">Guarda Lista Valori</span>
-    </a>
-      @* if *@
-     
-    @*@Html.ActionLink("Guarda Lista Valori", "Index")*@
-    <a href="@Url.Action("Index", "AttributeOpts", new { })" class="btn btn-default btn-sm">
-        <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-6x text-info" title="Torna Lista Attributi"></i>
-        <span class="sr-only">Torna Lista Attributi</span>
-    </a>
-</div>
-@*<div>
+        @*@Html.ActionLink("BACK TO Attributes Index", "Index", "AttributeOpts")*@
+        <a href="@Url.Action("Index", "AttributeOptValues", new { })" class="btn btn-default btn-sm">
+            @*<i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-6x text-info" title="Ritorna"></i>*@
+            <i aria-hidden="true" class="btn btn-default btn-sm fas far fa-list-alt" text-info" title="Guarda Lista Valori"></i>
+            <span class="sr-only">Guarda Lista Valori</span>
+        </a>
+        @* if *@
+
+        @*@Html.ActionLink("Guarda Lista Valori", "Index")*@
+        <a href="@Url.Action("Index", "AttributeOpts", new { })" class="btn btn-default btn-sm">
+            <i aria-hidden="true" class="btn btn-default btn-sm fas fa-angle-double-left fa-6x text-info" title="Torna Lista Attributi"></i>
+            <span class="sr-only">Torna Lista Attributi</span>
+        </a>
+    </div>
+    @*<div>
         @Html.ActionLink("Back to List", "Index")
     </div>*@
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
 
-}
+    }

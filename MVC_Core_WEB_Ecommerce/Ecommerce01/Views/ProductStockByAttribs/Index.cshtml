@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Ecommerce01.Models.ProductStockByAttrib>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AttributeOpt.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductAttributeValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverriddenPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReorderPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkuEAN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDisponible)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttributeOpt.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductAttributeValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverriddenPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReorderPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkuEAN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDisponible)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductStockByAttribId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductStockByAttribId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductStockByAttribId })
+        </td>
+    </tr>
+}
+
+</table>

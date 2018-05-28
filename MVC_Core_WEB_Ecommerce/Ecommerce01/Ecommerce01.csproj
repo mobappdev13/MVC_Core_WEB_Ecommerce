@@ -277,6 +277,8 @@
     <Compile Include="Controllers\AttributeOptValuesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
+    <Compile Include="Controllers\ColorsController.cs" />
+    <Compile Include="Controllers\ColorSelsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DepartamentsController.cs" />
@@ -284,14 +286,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Migrations\201804171329534_stockProdAttribA.cs" />
-    <Compile Include="Migrations\201804171329534_stockProdAttribA.Designer.cs">
-      <DependentUpon>201804171329534_stockProdAttribA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804171345275_stockProdAttribB.cs" />
-    <Compile Include="Migrations\201804171345275_stockProdAttribB.Designer.cs">
-      <DependentUpon>201804171345275_stockProdAttribB.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\ProductStockByAttribsController.cs" />
+    <Compile Include="Controllers\SizeDimsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
@@ -303,73 +299,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804031843514_InitialCreate.cs" />
-    <Compile Include="Migrations\201804031843514_InitialCreate.Designer.cs">
-      <DependentUpon>201804031843514_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201804191040297_InitialCreate.cs" />
+    <Compile Include="Migrations\201804191040297_InitialCreate.Designer.cs">
+      <DependentUpon>201804191040297_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804031912201_Suppliers1.cs" />
-    <Compile Include="Migrations\201804031912201_Suppliers1.Designer.cs">
-      <DependentUpon>201804031912201_Suppliers1.cs</DependentUpon>
+    <Compile Include="Migrations\201804191051180_withSeed.cs" />
+    <Compile Include="Migrations\201804191051180_withSeed.Designer.cs">
+      <DependentUpon>201804191051180_withSeed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804031930475_Suppliers2.cs" />
-    <Compile Include="Migrations\201804031930475_Suppliers2.Designer.cs">
-      <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
+    <Compile Include="Migrations\201804191633130_colorsels.cs" />
+    <Compile Include="Migrations\201804191633130_colorsels.Designer.cs">
+      <DependentUpon>201804191633130_colorsels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804051637574_Duplicatedpermitted.cs" />
-    <Compile Include="Migrations\201804051637574_Duplicatedpermitted.Designer.cs">
-      <DependentUpon>201804051637574_Duplicatedpermitted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804052118099_NewInventory.cs" />
-    <Compile Include="Migrations\201804052118099_NewInventory.Designer.cs">
-      <DependentUpon>201804052118099_NewInventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804061127559_inventoriesnotNull.cs" />
-    <Compile Include="Migrations\201804061127559_inventoriesnotNull.Designer.cs">
-      <DependentUpon>201804061127559_inventoriesnotNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804061359520_newProdInventories.cs" />
-    <Compile Include="Migrations\201804061359520_newProdInventories.Designer.cs">
-      <DependentUpon>201804061359520_newProdInventories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804081633304_addOrderAttributes.cs" />
-    <Compile Include="Migrations\201804081633304_addOrderAttributes.Designer.cs">
-      <DependentUpon>201804081633304_addOrderAttributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804081924247_addAttributesNew.cs" />
-    <Compile Include="Migrations\201804081924247_addAttributesNew.Designer.cs">
-      <DependentUpon>201804081924247_addAttributesNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091152462_changeValueAttribute.cs" />
-    <Compile Include="Migrations\201804091152462_changeValueAttribute.Designer.cs">
-      <DependentUpon>201804091152462_changeValueAttribute.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804101304160_ProductAttributeStock.cs" />
-    <Compile Include="Migrations\201804101304160_ProductAttributeStock.Designer.cs">
-      <DependentUpon>201804101304160_ProductAttributeStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804101520060_NewTables.cs" />
-    <Compile Include="Migrations\201804101520060_NewTables.Designer.cs">
-      <DependentUpon>201804101520060_NewTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804110851196_AttributeValues.cs" />
-    <Compile Include="Migrations\201804110851196_AttributeValues.Designer.cs">
-      <DependentUpon>201804110851196_AttributeValues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804121003493_isUniqueValueAtt.cs" />
-    <Compile Include="Migrations\201804121003493_isUniqueValueAtt.Designer.cs">
-      <DependentUpon>201804121003493_isUniqueValueAtt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804121248553_AttribValNOnUnique.cs" />
-    <Compile Include="Migrations\201804121248553_AttribValNOnUnique.Designer.cs">
-      <DependentUpon>201804121248553_AttribValNOnUnique.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804121319568_AddIndixes.cs" />
-    <Compile Include="Migrations\201804121319568_AddIndixes.Designer.cs">
-      <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804180757076_severalChanges.cs" />
-    <Compile Include="Migrations\201804180757076_severalChanges.Designer.cs">
-      <DependentUpon>201804180757076_severalChanges.cs</DependentUpon>
+    <Compile Include="Migrations\201804201959567_forDrop.cs" />
+    <Compile Include="Migrations\201804201959567_forDrop.Designer.cs">
+      <DependentUpon>201804201959567_forDrop.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -377,12 +321,14 @@
     <Compile Include="Models\AttributeOptValue.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyCustomer.cs" />
     <Compile Include="Models\CompanySupplier.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Departament.cs" />
     <Compile Include="Models\Ecommerce01Context.cs" />
+    <Compile Include="Models\ColorSel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -394,6 +340,7 @@
     <Compile Include="Models\ProductStockByAttrib.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\SizeDim.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierClasse.cs" />
@@ -405,12 +352,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\css\fa-brands.css" />
     <Content Include="Content\css\fa-brands.min.css" />
     <Content Include="Content\css\fa-regular.css" />
@@ -485,6 +436,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -493,6 +446,8 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\efor_citta.js" />
     <Content Include="Scripts\efor_aziend.js" />
@@ -664,6 +619,28 @@
     <Content Include="Views\AttributeOptValues\Details.cshtml" />
     <Content Include="Views\AttributeOptValues\Edit.cshtml" />
     <Content Include="Views\AttributeOptValues\Index.cshtml" />
+    <Content Include="Views\ProductStockByAttribs\Create.cshtml" />
+    <Content Include="Views\ProductStockByAttribs\Delete.cshtml" />
+    <Content Include="Views\ProductStockByAttribs\Details.cshtml" />
+    <Content Include="Views\ProductStockByAttribs\Edit.cshtml" />
+    <Content Include="Views\ProductStockByAttribs\Index.cshtml" />
+    <Content Include="Views\Colors\Create.cshtml" />
+    <Content Include="Views\Colors\Delete.cshtml" />
+    <Content Include="Views\Colors\Details.cshtml" />
+    <Content Include="Views\Colors\Edit.cshtml" />
+    <Content Include="Views\Colors\Index.cshtml" />
+    <Content Include="Views\SizeDims\Create.cshtml" />
+    <Content Include="Views\SizeDims\Delete.cshtml" />
+    <Content Include="Views\SizeDims\Details.cshtml" />
+    <Content Include="Views\SizeDims\Edit.cshtml" />
+    <Content Include="Views\SizeDims\Index.cshtml" />
+    <Content Include="Views\ColorSels\Create.cshtml" />
+    <Content Include="Views\ColorSels\Delete.cshtml" />
+    <Content Include="Views\ColorSels\Details.cshtml" />
+    <Content Include="Views\ColorSels\Edit.cshtml" />
+    <Content Include="Views\ColorSels\A.cshtml" />
+    <Content Include="Views\ColorSels\ChoosenDropDown.cshtml" />
+    <Content Include="Views\ColorSels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -688,62 +665,17 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804031843514_InitialCreate.resx">
-      <DependentUpon>201804031843514_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804191040297_InitialCreate.resx">
+      <DependentUpon>201804191040297_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804031912201_Suppliers1.resx">
-      <DependentUpon>201804031912201_Suppliers1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804191051180_withSeed.resx">
+      <DependentUpon>201804191051180_withSeed.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804031930475_Suppliers2.resx">
-      <DependentUpon>201804031930475_Suppliers2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804191633130_colorsels.resx">
+      <DependentUpon>201804191633130_colorsels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804051637574_Duplicatedpermitted.resx">
-      <DependentUpon>201804051637574_Duplicatedpermitted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804052118099_NewInventory.resx">
-      <DependentUpon>201804052118099_NewInventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804061127559_inventoriesnotNull.resx">
-      <DependentUpon>201804061127559_inventoriesnotNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804061359520_newProdInventories.resx">
-      <DependentUpon>201804061359520_newProdInventories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804081633304_addOrderAttributes.resx">
-      <DependentUpon>201804081633304_addOrderAttributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804081924247_addAttributesNew.resx">
-      <DependentUpon>201804081924247_addAttributesNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091152462_changeValueAttribute.resx">
-      <DependentUpon>201804091152462_changeValueAttribute.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804101304160_ProductAttributeStock.resx">
-      <DependentUpon>201804101304160_ProductAttributeStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804101520060_NewTables.resx">
-      <DependentUpon>201804101520060_NewTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804110851196_AttributeValues.resx">
-      <DependentUpon>201804110851196_AttributeValues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121003493_isUniqueValueAtt.resx">
-      <DependentUpon>201804121003493_isUniqueValueAtt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121248553_AttribValNOnUnique.resx">
-      <DependentUpon>201804121248553_AttribValNOnUnique.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121319568_AddIndixes.resx">
-      <DependentUpon>201804121319568_AddIndixes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804171329534_stockProdAttribA.resx">
-      <DependentUpon>201804171329534_stockProdAttribA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804171345275_stockProdAttribB.resx">
-      <DependentUpon>201804171345275_stockProdAttribB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804180757076_severalChanges.resx">
-      <DependentUpon>201804180757076_severalChanges.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804201959567_forDrop.resx">
+      <DependentUpon>201804201959567_forDrop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

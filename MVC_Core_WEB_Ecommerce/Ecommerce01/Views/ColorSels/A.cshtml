@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Bootstrap.min.css" rel="stylesheet" />
+<h2 style="margin-top:60px;">Chosen Js plugin</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("1. Single select")<br />
+    @Html.DropDownList("countrylist", null, "select single country", new { style = "width:200px;" })<br /><br />
+    
+    @Html.Label("2.Choosen Multiple select")<br />
+    @Html.ListBox("multiselectcountries", ViewBag.MultiselectCountry as MultiSelectList, new { style = "width:200px;" })<br /><br />
+}

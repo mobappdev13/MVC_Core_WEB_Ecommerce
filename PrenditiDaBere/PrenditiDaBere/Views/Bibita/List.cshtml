@@ -1,0 +1,7 @@
+﻿@model ListaBibiteViewModel
+<div class="row marginTop">
+    @foreach (var bibita in Model.Bibite)
+    {
+        @Html.Partial("ResocontoBibite", bibita)
+    }
+</div>

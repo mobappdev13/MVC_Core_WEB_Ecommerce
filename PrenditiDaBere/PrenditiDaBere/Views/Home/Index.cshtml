@@ -1,0 +1,11 @@
+﻿@using PrenditiDaBere.ViewModels;
+@model HomeViewModel
+@await Html.PartialAsync("Carousel")
+<h2>Bibite preferite della settimana! </h2>
+<h4>Preferenze degli altri clienti - solo per te!</h4>
+<div class="row">
+    @foreach (var bibita in Model.BibitePreferite)
+    {
+        @Html.Partial("ResocontoBibite", bibita)
+    }
+</div>

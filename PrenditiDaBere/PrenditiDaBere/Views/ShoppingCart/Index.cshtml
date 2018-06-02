@@ -1,0 +1,67 @@
+﻿@using PrenditiDaBere.ViewModels;
+@model ShoppingCartViewModel
+<div class="row checkoutForm">
+    <h2>Carrello della spesa</h2>
+    <h4>Lista bibite nel tuo carrello della spesa</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Quantità Selezionata</th>
+                <th>Bibita</th>
+                <th class="text-right">Prezzo</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <tr>
+                    <td class="text-center">@line.Quantita</td>
+                    <td class="text-left">@line.Bibita.Nome</td>
+                    <td class="text-right">@line.Bibita.Prezzo.ToString("c")</td>
+                    <td class="text-right">
+                        @((line.Quantita * line.Bibita.Prezzo).ToString("c"))
+                    </td>
+                    <td class="text-center">
+                        <a class="glyphicon glyphicon-remove text-danger remove" 
+                              asp-controller="ShoppingCart" 
+                              asp-action="RemoveFromShoppingCart" 
+                              asp-route-bibitaId="@line.Bibita.BibitaId">
+                       </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Totale:</td>
+                <td class="text-right">
+                    @Model.ShoppingCartTotal.ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="text-right">
+        <div class="btn-group ">
+            <a class="btn btn-warning" 
+               asp-controller="Ordine" 
+               asp-action="Checkout">Fine Scelta - Fai Ordine </a>
+            <div class="btn-group">
+                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Addiziona altre bibite<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a asp-controller="Bibita" 
+                           asp-action="List" 
+                           asp-route-categoria="Alcolica">Alcolica</a>
+                    </li>
+                    <li><a asp-controller="Bibita" 
+                           asp-action="List" 
+                           asp-route-categoria="Analcolica">Analcolica</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

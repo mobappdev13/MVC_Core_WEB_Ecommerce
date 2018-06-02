@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Prenditi da Bere</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Prenditi da Bere</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    @await Component.InvokeAsync("MenuCategoria")
+                    <li><a asp-controller="About" asp-action="Index">About</a></li>
+                    @await Component.InvokeAsync("ResocontoShoppingCart")
+                </ul>
+                @await Html.PartialAsync("LoginPartial")
+                <form class="navbar-form navbar-right" asp-controller="Bibita" asp-action="Search" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Cerca una Bibita" name="ricercaString" value="@ViewData["ricercaString"]">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    @* vediamo *@
+    @*<div class="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 logo">
+                    <a href="/">
+                        <img alt="SimplCommerce" src="/modules/core/Logo_SimplCommerce.png">
+                    </a>
+                </div>
+                <div class="col-10 col-md-5 col-lg-7 search-box">
+
+                    <form class="form-inline" method="get" action="/search">
+                        <div class="form-group search-input">
+                            <input type="text" name="query" class="form-control" placeholder="Search here..." id="Query" value="">
+                        </div>
+                        <div class="form-group search-category d-none d-lg-block">
+                            <select name="category" class="form-control" id="Category">
+                                <option value="all">All Categories</option>
+                                <option value="phones">Phones</option>
+                                <option value="tablets">Tablets</option>
+                                <option value="computers">Computers</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="menu-me">menu me</option>
+                                <option value="testmeme">Test</option>
+                                <option value="testblackboard">Test</option>
+                                <option value="Gogo">Rest</option>
+                                <option value="test">Test</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="search-btn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-2 col-md-1 cart-btn">
+
+                    <div class="cart-badge badge-icons pull-right">
+                        <a href="/cart">
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        <span class="badge badge-sea rounded-x">0</span>
+                        <div class="badge-open">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+        <div class="navbar navbar-expand-lg navbar-light bg-light btco-hover-menu main-nav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/menu-me">menu me</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Phones</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/phones">All Phones</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Smart Phones</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/smart-phones">All Smart Phones</a></li>
+                                        <li><a class="dropdown-item" href="/test-1">Test 1</a></li>
+                                        <li><a class="dropdown-item" href="/test-2">Test 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="/basic-phones">Basic Phones</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Tablets</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/tablets">All Tablets</a></li>
+                                <li><a class="dropdown-item" href="/cellular-tablets">Cellular tablets</a></li>
+                                <li><a class="dropdown-item" href="/wifi-cellular-tablets">Wifi + Cellular tablets</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Computers</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/computers">All Computers</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/gaming">Gaming</a></li>
+                                <li><a class="dropdown-item" href="/business">Business</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Accessories</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/accessories">All Accessories</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/headphones">Headphones</a></li>
+                                <li><a class="dropdown-item" href="/cables">Cables</a></li>
+                                <li><a class="dropdown-item" href="/usb-drives">USB Drives</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/Gogo">Rest</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+        @* vediamo fine *@
+        <div class="container body-content" style="padding:50px;">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p><a target="_blank" href="https://github.com/mobappdev13">&copy; Italian Version - 2018 - Carmen Vargas</a></p>
+                <p><a target="_blank" href="https://github.com/etrupja">&copy; Original Version - 2017 - Ervis Trupja</a></p>
+            </footer>
+        </div>
+        @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,7 +1,11 @@
 ﻿@using PrenditiDaBere.Data.Models
 @model Bibita
-<div class="container marginTop">
+<div class="container-fluid marginTop">
     <div class="row">
+        <div class="col-sm-6" style="background-color:yellow;">
+            @*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.*@
+       
         <div class="card">
             <div class="text-center view overlay hm-white-slight">
                 <img src="~/images/@Model.MiniaturaImmagine" alt="Bibita" class="mg-fluid" />
@@ -28,5 +32,189 @@
                 </p>
             </div>
         </div>
+    </div>
+        <div class="col-sm-6" style="background-color:pink;">
+            <div class="grid__item medium--one-half large--five-twelfths">
+                <h1 itemprop="name">OPTIMIZE YOUR SLEEP</h1>
+
+                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="USD">
+
+                    <link itemprop="availability" href="http://schema.org/InStock">
+
+                    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+                        <div class="product-single__description text-left rte" itemprop="description">
+                            <p>Power OFF is the first NSF Certified for Sport sleep supplement that helps athletes calm down after extended training and games, and ensure a good night’s sleep for maximum performance.</p>
+                        </div>
+
+
+                        <div class="product-single__controls">
+                            <div class="hide">
+                                <div class="selector-wrapper"><select class="single-option-selector" data-option="option1" id="productSelect-option-0"><option value="Regular">Regular</option><option value="Teams">Teams</option><option value="Practitioners">Practitioners</option></select></div><select name="id" id="productSelect" style="display: none;">
+
+
+                                    <option data-price="69.99" selected="selected" data-sku="power-off" value="33504957380">Regular - $69.99 USD</option>
+
+
+
+                                    <option data-price="45.00" data-sku="power-off" value="3355703181352">Teams - $45.00 USD</option>
+
+
+
+                                    <option data-price="35.00" data-sku="power-off" value="3364227350568">Practitioners - $35.00 USD</option>
+
+
+                                </select>
+                            </div>
+
+                            <div class="product-single__bold-recurring">
+
+                                <div class="ro_widget"></div><div class="product_rp_div p9664362820">
+                                <style class="bold_style">
+                                    .product_rp_div {
+                                        background-color: #;
+                                        max-width: 100%;
+                                        border-color: #;
+                                        border-width: 0px;
+                                        border-style: solid;
+                                        margin-top: 0px;
+                                        margin-bottom: 15px;
+                                        margin-left: 0px;
+                                        margin-right: 0px;
+                                    }
+
+                                    .one_time_div, .recurring_div, .frequency_label, .mix_div {
+                                        color: #;
+                                        font-size: 15px;
+                                    }
+
+                                    .one_time_div, .recurring_div, .mix_div {
+                                        padding-top: 10px;
+                                        padding-bottom: 10px;
+                                        padding-left: 15px;
+                                        padding-right: 15px;
+                                        margin-top: 0px;
+                                        margin-bottom: 0px;
+                                        margin-left: 0px;
+                                        margin-right: 0px;
+                                        border-color: transparent;
+                                        border-width: 1px;
+                                        border-style: solid;
+                                    }
+
+                                    .bold_active {
+                                        background-color: #F5F5F5;
+                                        border-color: #DBDBDB;
+                                        border-width: 1px;
+                                        border-style: solid;
+                                    }
+
+                                    .frequency_label {
+                                        padding-top: 10px;
+                                        padding-bottom: 0px;
+                                        padding-left: 0px;
+                                        padding-right: 0px;
+                                    }
+
+                                    .frequency_num, .frequency_type {
+                                        margin-top: 0px;
+                                        margin-bottom: 0px !important;
+                                        margin-left: 10px;
+                                        margin-right: 0px;
+                                        width: auto;
+                                        display: inline-block;
+                                    }
+
+                                    .recurring_title {
+                                        color: #363636;
+                                        font-size: 20px;
+                                        font-weight: bold;
+                                        padding-top: 10px;
+                                        padding-bottom: 10px;
+                                        padding-left: 10px;
+                                        padding-right: 10px;
+                                    }
+
+                                    .new_discounted_price, .new_discounted_price_secondary, .new_amount_discounted_secondary, .new_amount_discounted, .prepaid_discounted_price {
+                                        color: # CF0C0C;
+                                        font-size: 16px;
+                                    }
+
+                                    .bold-ro .tooltip-inner {
+                                        background-color: #000000;
+                                        opacity: 0.9;
+                                        color: #FFFFFF;
+                                        font-size: 12px;
+                                        border-radius: 3px;
+                                        padding: 10px;
+                                    }
+
+                                    .bold-ro .tooltip.bottom .tooltip-arrow {
+                                        border-bottom-color: #000000;
+                                    }
+                                </style><div class="recurring_title">Subscribe and Save!</div><div class="one_time_div bold_active"><label class="one_time_radio_lbl"><input type="radio" value="0" name="recurring_radio_btn" class="one_time_radio_btn" checked="checked"><span>One Time Only Purchase — $69.99</span></label></div><div class="recurring_div bold-ro"><label style="display:inline-block" class="recurring_radio_lbl"><input type="radio" value="2" name="recurring_radio_btn" class="mixed_radio_btn"> Subscribe &amp; Save 10% (<span class="new_discounted_price">$62.99</span>)</label><div class="frequency_div"><div class="frequency_label">Order will ship every:<span style="padding-left:10px">1</span><input type="hidden" class="frequency_num" value="1"><span style="padding-left:10px">Month(s)</span><input type="hidden" class="frequency_type" value="3"></div><div class="prepaid_div" style="display: none;"></div></div></div></div>
+
+                            </div>
+
+                            <span class="product-single__sample hide">Order a sample!</span>
+
+                            <div class="product-single__quantity">
+
+
+                                <div class="js-qty">
+                                    <button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="" data-qty="0">
+                                        <svg width="15px" height="3px" viewBox="0 0 15 3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-848.000000, -739.000000)" fill-rule="nonzero" fill="#444444">
+                                                    <g transform="translate(829.449097, 715.998169)">
+                                                        <path d="M31.7003937,23.1047516 L19.7003937,23.1047516 C19.1481089,23.1047516 18.7003937,23.5524668 18.7003937,24.1047516 C18.7003937,24.6570363 19.1481089,25.1047516 19.7003937,25.1047516 L31.7003937,25.1047516 C32.2526784,25.1047516 32.7003937,24.6570363 32.7003937,24.1047516 C32.7003937,23.5524668 32.2526784,23.1047516 31.7003937,23.1047516 Z" id="Shape"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <input type="text" class="js-qty__num" value="1" min="1" data-id="" aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
+                                    <button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="" data-qty="11">
+                                        <svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-1068.000000, -734.000000)" fill-rule="nonzero" fill="#444444">
+                                                    <g transform="translate(829.449097, 715.998169)">
+                                                        <g transform="translate(239.000000, 18.000000)">
+                                                            <path d="M8,6 L8,1 C8,0.44771525 7.55228475,0 7,0 C6.44771525,0 6,0.44771525 6,1 L6,6 L1,6 C0.44771525,6 0,6.44771525 0,7 C0,7.55228475 0.44771525,8 1,8 L6,8 L6,13 C6,13.5522847 6.44771525,14 7,14 C7.55228475,14 8,13.5522847 8,13 L8,8 L13,8 C13.5522847,8 14,7.55228475 14,7 C14,6.44771525 13.5522847,6 13,6 L8,6 Z" id="Combined-Shape"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <button type="button" class="product-single__sample-submit product-single__submit btn hide">
+                                <span>$5.00</span>
+                                <span> — </span>
+                                <span>
+                                    Add to Cart
+                                </span>
+                            </button>
+
+                            <button class="btn button bold-ro__custombutton-9664362820" style="display: none;">$69.99 — ADD TO CART</button><button type="submit" name="add" id="AddToCart" class="btn product-single__submit addtocart cartbutton" style="" data-text="" value="">
+                                <span id="ProductPrice" class="product-single__price" itemprop="price" content="69.99">$69.99</span>
+                                <span> — </span>
+                                <span id="AddToCartText">Add to Cart</span>
+                            </button>
+
+                            <div class="bold_add_to_orders" style="display: none;"></div>
+                            <a class="9664362820_custom_button" data-toggle="modal" data-target="#myModal" style="display: none;">Add to Cart</a>
+                        </div>
+                        <input class="frequency_type_text" type="hidden" value="Month(s)"><input class="group_id" type="hidden" value="16337"><input type="hidden" class="discounted_price" value="$62.99"><input type="hidden" class="ro_discount_percentage" value="10"><input type="hidden" class="ro_unformatted_price" value="6299"><input class="frequency_type_text" type="hidden" value="Month(s)"><input class="group_id" type="hidden" value="16337"><input type="hidden" class="discounted_price" value="$62.99"><input type="hidden" class="ro_discount_percentage" value="10"><input type="hidden" class="ro_unformatted_price" value="6299"><input type="hidden" name="properties[_ftmx]" value="163caaafebc28-0e696e1d61bb02-737356c-100200-163caaafebd8a">
+                    </form>
+                </div>
+            </div>
     </div>
 </div>

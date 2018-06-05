@@ -15,17 +15,24 @@
                 <h4 class="card-title">@Model.Nome</h4>
                 <!--Text-->
                 <p class="card-text">@Model.LungaDescrizione.</p>
-                <p class="btn btn-group pull-right">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button id="btnSearch" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnSearch_Click">button</button>
+                        <button id="btnClear" class="btn btn-danger btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click">button</button>
+                    </div>
+                </div>
+                <div class="btn btn-group pull-right">
                     <a asp-controller="Bibita" 
                        asp-action="List" 
                        class="btn btn-default">Mostra tutte le Bibite</a>
                     <a class="btn btn-success" 
+                       <br/
                        id="cartButton" asp-controller="ShoppingCart" 
                        asp-action="AddToShoppingCart" 
                        asp-route-bibitaId="@Model.BibitaId">
                         Aggiunge @Model.Nome al Carrello
                     </a>
-                </p>
+                </div>
             </div>
         </div>
     </div>

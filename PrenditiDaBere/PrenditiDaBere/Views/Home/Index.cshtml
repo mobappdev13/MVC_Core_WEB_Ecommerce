@@ -1,91 +1,6 @@
 ﻿@using PrenditiDaBere.ViewModels;
 @model HomeViewModel
 
-
-
-
-@*<header class="c-header c-header--t1 js-header" data-mensajeidplantilla="" data-mensaje="" data-mensaje-tipo="" data-mensaje-url-ok="" role="banner" data-estado="1">
-    <div class="c-header__fix js-header__fix">
-        <div class="c-header__top"><div class="u-center-page"><ul class="c-header__sites"><li class="c-header__site-item"><a class="c-header__site c-header__site--cocacola" href="/tienda-coca-cola/" title="Tienda coca cola">Tu espacio Coca-Cola</a></li><li class="c-header__site-item"><a class="c-header__site c-header__site--recetas" href="/recetas/" title="Ver todas las recetas de Tudespensa.com">Recetas</a></li></ul><div class="c-header__contacto js-header__contacto"><a href="#" class="c-header__contacto__item-a js-header__contacto__item-a">Contacta con nosotros</a><div class="c-header__contacto__list"><ul class="o-accord js-accord"><li class="o-accord__item  js-accord__item o-accord__item--icon-left o-accord__item--icon-mail" data-info="" data-label="ayuda@tudespensa.com"><a class="o-accord__item-a u-valign-m js-accord__item-a" href="/contacto/" title="Contacta con nosotros"><span class="u-valign__i">ayuda@tudespensa.com</span></a></li><li class="o-accord__item  js-accord__item o-accord__item--icon-left o-accord__item--icon-phone" data-info="" data-label="900 103 282"><a class="o-accord__item-a u-valign-m js-accord__item-a" href="tel:900 103 282" title="Contacta con nosotros"><span class="u-valign__i">900 103 282</span></a></li><li class="o-accord__item  js-accord__item o-accord__item--icon-left o-accord__item--icon-chat" data-info="" data-label="Habla con TiDi"><a class="o-accord__item-a u-valign-m js-accord__item-a" href="http://m.me/1018268591594065" title="Habla con TiDi"><span class="u-valign__i">Habla con TiDi</span></a></li></ul></div></div><div class="c-header__util"><a class="c-header__ulink c-header__ulink--rec" href="/plan-amigo/" title="Recomienda TuDespensa">Recomiéndanos</a></div></div></div><div class="c-header__main">
-            <div class="u-center-page">
-                <a class="c-header__logo u-valign-m" href="/" title="TuDespensa.com"><span class="c-header__txt-logo"><em>tudespensa.com</em> ...vivirás mejor</span></a><div class="c-shopping-list js-shopping-list"><div class="c-shopping-list__hovercraft"><div class="c-shopping-list__title"><a href="#" class="c-shopping-list__link u-valign-m js-shopping-list__link"><span class="c-shopping-list__link-i">Tu lista de la compra</span></a><a href="#" class="c-shopping-list__close js-shopping-list__close">Cerrar</a><a href="#" class="c-shopping-list__unfold js-shopping-list__unfold"><span class="c-shopping-list__unfold-txt">Desplegar</span></a></div><div class="c-shopping-list__i c-shopping-list__content js-shopping-list__content"><div class="c-shopping-list-content js-shopping-list-content"><ul class="c-shopping-list-content__items"><li class="c-shopping-list-content__item js-shopping-list-content__item u-hide" data-text=""><a href="#" class="c-shopping-list-content__item-txt js-shopping-list-content__item-lnk"><span class="shopping-list-content__item-lnk-i js-shopping-list-content__item-lnk-i"></span></a><a href="#" class="c-shopping-list-content__item-remove js-shopping-list-content__item-remove">Eliminar</a><a href="#" class="c-shopping-list-content__item-view js-shopping-list-content__item-view">Ver</a></li><li class="c-shopping-list-content__item c-shopping-list-content__item--new"><input type="text" class="js-shopping-list-content__item-new c-shopping-list-content__item-txt u-valign-m" placeholder="Escribe aquí para añadir"><button class="js-shopping-list-content__item-new-btn c-shopping-list-content__item-new-btn">Añadir</button></li></ul></div></div><div class="c-shopping-list__i c-shopping-list__tools"><button title="Pulsa aquí para empezar de nuevo a escribir tu lista" class="o-btn o-btn--transparent o-btn--icon-right o-btn--icon-remove js-shopping-list__empty">Vaciar lista</button></div></div></div><form action="/busqueda/" method="get" class="c-cat-search js-cat-search c-header__main-component"><div class="c-cat-search__btn-view js-cat-search__btn-view">Ver buscador</div><label for="headerQ" class="c-cat-search__label">Busca tus productos</label><div class="c-cat-search__content"><input id="headerQ" placeholder="Escribe un producto, ej: leche" name="q" autocomplete="off" class="c-cat-search__input"><button class="c-cat-search__submit u-hide-text" type="submit">&nbsp;</button><button class="c-cat-search__close u-hide-text js-cat-search__close">Cerrar</button><div class="c-cat-search__suggest js-cat-search__suggest"></div></div></form><div class="c-header__main-component c-header__main-reg u-valign-m">
-                    <div class="c-header__main-reg-txt u-valign__i">
-                        <span class="c-header__main-reg-colored-txt">Regístrate</span> y descubre cómo
-                        puedes vivir mejor
-                    </div><button title="Regístrate en Tudespensa.com" class="o-btn o-btn--ctahead js-header__btn-reg">Regístrate</button>
-                </div><div class="c-header__main-component c-header__main-log u-valign-m"><button title="Entra con tu cuenta de Tudespensa.com" class="o-btn o-btn--ctahead js-header__btn-log"><span class="c-header__main-log-b">Ya soy cliente</span><span class="c-header__main-log-s">Entrar</span></button></div>
-            </div>
-        </div><nav class="c-header__menu" role="navigation">
-            <div class="u-center-page">
-                <ul class="c-header__menu-items">
-                    <li class="c-header__menu-item">
-                        <a href="/supermercado/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                SUPERMERCADO
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/frescos/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                FRESCOS
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/productos-ecologicos/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                ECOLÓGICO
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/productos-gourmet/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                GOURMET
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/comida-a-domicilio/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                PLATOS PREPARADOS
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/productos-internacionales/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                PRODUCTOS INTERNACIONALES
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/coverflow-mascotas/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                MASCOTAS
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item">
-                        <a href="/secciones-especiales/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                OTRAS SECCIONES
-                            </span>
-                        </a>
-                    </li>
-                    <li class="c-header__menu-item c-header__menu-item--ofertas">
-                        <a href="/ofertas/" class="c-header__menu-href u-valign-m">
-                            <span class="c-header__menu-href-i u-valign__i">
-                                OFERTAS
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div><div class="c-header__content"><div class="c-header__content-i"><div class="u-center-page js-header__content"></div></div></div>
-</header>*@
 @await Html.PartialAsync("Carousel")
 <nav class="c-header__menu" role="navigation">
     <div class="u-center-page">
@@ -93,69 +8,70 @@
             <li class="c-header__menu-item">
                 <a href="/supermercado/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        SUPERMERCADO
+                        BIBITE CALDE
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/frescos/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        FRESCOS
+                        BIBITE FRESCHE
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/productos-ecologicos/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        ECOLÓGICO
+                        ALTRE BIBITE
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/productos-gourmet/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        GOURMET
+                        STUZZICHINI
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/comida-a-domicilio/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        PLATOS PREPARADOS
+                       HAMBURGHER
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/productos-internacionales/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        PRODUCTOS INTERNACIONALES
+                       PANINI
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/coverflow-mascotas/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        MASCOTAS
+                        SNACKS
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item">
                 <a href="/secciones-especiales/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        OTRAS SECCIONES
+                       ALTRO
                     </span>
                 </a>
             </li>
             <li class="c-header__menu-item c-header__menu-item--ofertas">
                 <a href="/ofertas/" class="c-header__menu-href u-valign-m">
                     <span class="c-header__menu-href-i u-valign__i">
-                        OFERTAS
+                        OFERTE
                     </span>
                 </a>
             </li>
         </ul>
     </div>
 </nav>
+<br/>
 <h2>Bibite preferite della settimana! </h2>
 <h4>Preferenze degli altri clienti - solo per te!</h4>
 <div class="row">

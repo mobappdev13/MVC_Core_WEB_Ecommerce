@@ -1,0 +1,20 @@
+﻿<div class="container">
+    <ul class="nav nav-pills">
+        @foreach (var categoria in Model)
+        {
+            <li role="presentation">
+                <a asp-controller="Bibita"
+                   asp-action="List"
+                   asp-route-categoria="@categoria.NomeCategoria">@categoria.NomeCategoria</a>
+            </li>
+        }
+
+    </ul>
+    </div>
+    @*<div class="container">
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="#">categoria 1</a></li>
+                <li role="presentation"><a href="#">categoria2</a></li>
+                <li role="presentation"><a href="#">categoria3</a></li>
+            </ul>
+        </div>*@

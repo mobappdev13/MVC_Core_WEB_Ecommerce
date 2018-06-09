@@ -5,162 +5,12 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/site.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <title>Prenditi da Bere</title>
 </head>
 <body>
-    @*<div class="container-fluid">
-            <header>
-                <div class="row">
-                    <!--logo-->
-                    <div class="col-xs-12 col-md-2">
-                        <a class="navbar-brand logo-top" title="Drogueria - La Rebaja Virtual" alt="logo - La Rebaja" href="/"><img src="/images/logotop.png" alt="La rebaja virtual"></a>
-                    </div>
-
-                    <div class="col-xs-12 col-md-10">
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <div class="top_ubicacion">
-                                    Seleccionar ciudad                                            <a href="/sitio/ubicacion"><span class="text-center title-desp"><br><span class="glyphicon glyphicon-map-marker" style="margin-right: 5px;"></span> Cambiar Ciudad </span></a>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <form method="get" action="/catalogo/buscar">
-                                    <div class="row">
-                                        <div class="col-xs-7 content-search">
-                                            <input type="text" class="form-control" placeholder="Escriba el nombre del producto" autocomplete="off" value="" id="busqueda" name="busqueda">
-                                        </div>
-                                        <div class="col-xs-5 content-category">
-                                            <div class="controls">
-                                                <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-label-placement="" style="width: 126px;">
-                                                    Todas las categorías
-                                                </span>
-                                                <a href="#" id="btn-buscador-productos" class="float-right"><img class="ico-buscar" src="/images/desktop/ico-buscar.png" alt=""></a>
-                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle float-right" style="margin-right: 2px;"><i><img src="/images/desktop/ico-filtro-categorias.png"></i></a>
-                                                <ul class="dropdown-menu todas-categorias" aria-labelledby="categorias">
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[1]" id="categoriasBuscador_1" value="1">
-                                                        <label for="categoriasBuscador_1" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_alimentos.png" alt="" class="data-label">ALIMENTOS Y BEBIDAS</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[47]" id="categoriasBuscador_47" value="47">
-                                                        <label for="categoriasBuscador_47" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_aseohogar.png" alt="" class="data-label">ASEO Y HOGAR</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[126]" id="categoriasBuscador_126" value="126">
-                                                        <label for="categoriasBuscador_126" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_bebes.png" alt="" class="data-label">BEBE</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[259]" id="categoriasBuscador_259" value="259">
-                                                        <label for="categoriasBuscador_259" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_rehabilitacion.png" alt="" class="data-label">CUIDADO EN CASA</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[77]" id="categoriasBuscador_77" value="77">
-                                                        <label for="categoriasBuscador_77" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_cuidadopersonal.png" alt="" class="data-label">CUIDADO PERSONAL</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[167]" id="categoriasBuscador_167" value="167">
-                                                        <label for="categoriasBuscador_167" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_dermocosmeticos.png" alt="" class="data-label">DERMOCOSMETICA</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[188]" id="categoriasBuscador_188" value="188">
-                                                        <label for="categoriasBuscador_188" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_belleza.png" alt="" class="data-label">MAQUILLAJE Y ACCESORIOS</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[213]" id="categoriasBuscador_213" value="213">
-                                                        <label for="categoriasBuscador_213" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_mascotas.png" alt="" class="data-label">MASCOTAS</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[212]" id="categoriasBuscador_212" value="212">
-                                                        <label for="categoriasBuscador_212" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_medicinaformulada.png" alt="" class="data-label">MEDICINA FORMULADA</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[227]" id="categoriasBuscador_227" value="227">
-                                                        <label for="categoriasBuscador_227" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_naturales.png" alt="" class="data-label">NATURALES</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[279]" id="categoriasBuscador_279" value="279">
-                                                        <label for="categoriasBuscador_279" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_saludybienestar.png" alt="" class="data-label">SALUD Y BIENESTAR</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" name="categoriasBuscador[650]" id="categoriasBuscador_650" value="650">
-                                                        <label for="categoriasBuscador_650" class="clst_check"><span></span> <img src="/images/menu/desktop/icon_electrohogar.png" alt="" class="data-label">ELECTROHOGAR</label>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-4">
-                                <ul class="user">
-                                    <li><a href="/usuario/autenticar/opcion/inicio"><img class="ico-user" src="/images/desktop/ico-iniciar-sesion.png" alt=""> Iniciar Sesión</a></li>
-                                    <span style="color:#A3A3A3;" class="hidden-xs hidden-sm">|</span>
-                                    <li><a href="/usuario/autenticar/opcion/registro">Registrate</a></li>
-                                </ul>
-                                <div class="info-compra" style="margin-right:0;">
-                                    <div data-role="panel" id="div-carro-canasta">
-                                        <div class="btn-group minicar">
-                                            <a href="#" data-toggle="dropdown" data-placeholder="false" class="dropdown-toggle">
-                                                <span><img class="ico-carrito" src="/images/desktop/ico-carrito.png" alt=""></span>
-                                                <span id="cantidad-productos" class="cantidad-productos">0</span>
-                                                <p style="color: #A3A3A3;">Productos</p>
-                                            </a>
-
-                                            <ul class="dropdown-menu noclose pull-right">
-                                                <li class="top">Hay 0 producto(s) en el carro</li>
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-sm-12 carro-descripcion sin-productos">
-                                                            No hay productos en el carrito
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- modal pago express -->
-                                        <div class="modal fade" id="modal-pagoexpress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                                        <h4 class="modal-title text-center" id="myModalLabel">Pago Express</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                El pago express solo está disponible para los pedidos con tipo de entrega a Domicilio, si desea usar el pago express con tipo de entrega a Domicilio de clic en Aceptar
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer center">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                        <a href="/carro/pagoexpress" class="btn btn-primary">Aceptar</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info-compra">
-                                    <a href="#" data-role="compararProductos" data-opcion="comparar">
-                                        <span><img class="ico-carrito" src="/images/desktop/comprar.png" alt="Comparar productos" title="Comparar productos"></span>
-                                    </a>
-                                    <span id="cantidad-productos-comparar" class="cantidad-productos">
-                                        0
-                                    </span>
-                                    <p style="color: #A3A3A3;">Comparar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </div>*@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -187,137 +37,23 @@
                 </form>
             </div>
         </div>
-
-        @*<div>questo 1</div>
-            <div>questo 2</div>*@
-        @*<nav class="navbar navbar-inverse" role="navigation">*@
         <div class="container">
             <ul class="nav nav-pills">
-                <li role="presentation"><a href="#">categoria 1</a></li>
-                <li role="presentation"><a href="#">categoria2</a></li>
-                <li role="presentation"><a href="#">categoria3</a></li>
+                @*<li><a asp-controller="Home" asp-action="Index">Home</a></li>*@
+                @await Component.InvokeAsync("MenuCategoriaH")
+                @*<li role="presentation"><a href="#">categoria 1</a></li>
+                    <li role="presentation"><a href="#">categoria2</a></li>
+                    <li role="presentation"><a href="#">categoria3</a></li>*@
             </ul>
         </div>
-        @*</nav>*@
-        @* vediamo *@
-        @*<div class="main-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4 logo">
-                            <a href="/">
-                                <img alt="SimplCommerce" src="/modules/core/Logo_SimplCommerce.png">
-                            </a>
-                        </div>
-                        <div class="col-10 col-md-5 col-lg-7 search-box">
-
-                            <form class="form-inline" method="get" action="/search">
-                                <div class="form-group search-input">
-                                    <input type="text" name="query" class="form-control" placeholder="Search here..." id="Query" value="">
-                                </div>
-                                <div class="form-group search-category d-none d-lg-block">
-                                    <select name="category" class="form-control" id="Category">
-                                        <option value="all">All Categories</option>
-                                        <option value="phones">Phones</option>
-                                        <option value="tablets">Tablets</option>
-                                        <option value="computers">Computers</option>
-                                        <option value="accessories">Accessories</option>
-                                        <option value="menu-me">menu me</option>
-                                        <option value="testmeme">Test</option>
-                                        <option value="testblackboard">Test</option>
-                                        <option value="Gogo">Rest</option>
-                                        <option value="test">Test</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="search-btn">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="col-2 col-md-1 cart-btn">
-
-                            <div class="cart-badge badge-icons pull-right">
-                                <a href="/cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
-                                <span class="badge badge-sea rounded-x">0</span>
-                                <div class="badge-open">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-                <div class="navbar navbar-expand-lg navbar-light bg-light btco-hover-menu main-nav">
-                    <div class="container">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarMain">
-
-
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="/menu-me">menu me</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Phones</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="/phones">All Phones</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item dropdown-toggle" href="javascript:void(0);">Smart Phones</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="/smart-phones">All Smart Phones</a></li>
-                                                <li><a class="dropdown-item" href="/test-1">Test 1</a></li>
-                                                <li><a class="dropdown-item" href="/test-2">Test 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="dropdown-item" href="/basic-phones">Basic Phones</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Tablets</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/tablets">All Tablets</a></li>
-                                        <li><a class="dropdown-item" href="/cellular-tablets">Cellular tablets</a></li>
-                                        <li><a class="dropdown-item" href="/wifi-cellular-tablets">Wifi + Cellular tablets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Computers</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="/computers">All Computers</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="/gaming">Gaming</a></li>
-                                        <li><a class="dropdown-item" href="/business">Business</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Accessories</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="/accessories">All Accessories</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="/headphones">Headphones</a></li>
-                                        <li><a class="dropdown-item" href="/cables">Cables</a></li>
-                                        <li><a class="dropdown-item" href="/usb-drives">USB Drives</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="/Gogo">Rest</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>*@
-        @* vediamo fine *@
     </nav>
-            <div class="container body-content" style="padding:50px;">
+    
+            <div class="container body-content" style="padding-top:60px;padding-right: 50px; padding-bottom: 50px;    padding-left: 50px;">
                 @RenderBody()
                 <hr />
                 <footer>
                     <p><a target="_blank" href="https://github.com/mobappdev13">&copy; Italian Version - 2018 - Carmen Vargas</a></p>
-                    <p><a target="_blank" href="https://github.com/etrupja">&copy; Original Version - 2017 - Ervis Trupja</a></p>
+                    @*<p><a target="_blank" href="https://github.com/etrupja">&copy; Original Version - 2017 - Ervis Trupja</a></p>*@
                 </footer>
             </div>
             @RenderSection("scripts", required: false)
